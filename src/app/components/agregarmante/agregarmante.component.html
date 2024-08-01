@@ -1,0 +1,61 @@
+<div class="body">
+  <div class="container2">
+    <div class="title">
+      Agregar Mantenimiento
+    </div>
+
+    <form #createMantenimiento="ngForm" (ngSubmit)="StoreMantenimiento(createMantenimiento)">
+      <div class="author-details">
+        <div class="input-box">
+          <span class="details">ID Mantenimiento</span>
+          <input type="text" placeholder="Ingrese el ID del mantenimiento" id="id" name="id" #id="ngModel" [(ngModel)]="mantenimiento.idMantenimiento" required>
+        </div>
+     
+        <div class="input-box size">
+          <label for="VehiculoId" class="details">Vehiculo </label>
+          <select id="VehiculoId" name="VehiculoId" [(ngModel)]="mantenimiento.idVehiculo" required>
+            <option *ngFor="let vehiculo of vehiculos" [value]="vehiculo.placaVehiculo">{{ vehiculo.placaVehiculo }}</option>
+          </select>
+        </div>
+
+        <div class="input-box">
+          <label for="TipoMantenimientoId" class="details">Tipo de mantenimiento </label>
+          <select id="TipoMantenimientoId" name="TipoMantenimientoId" [(ngModel)]="mantenimiento.tipoMantenimiento" required>
+            <option *ngFor="let tipomantenimiento of tipomantenimientos" [value]="tipomantenimiento.idTipoMantenimiento">{{ tipomantenimiento.nombre }}</option>
+          </select>
+        </div>
+
+        <div class="input-box">
+          <label for="EmpleadoEncargadoId" class="details">Empleado encargado </label>
+          <select id="EmpleadoEncargadoId" name="EmpleadoEncargadoId" [(ngModel)]="mantenimiento.empleadoEncargado" required>
+            <option *ngFor="let empleadoU of empleados" [value]="empleadoU.idEmpleado">{{ empleadoU.nombre}}</option>
+          </select>
+        </div>
+
+        <div class="input-box">
+          <label for="fechaMantenimiento" class="details">Fecha de mantenimiento</label>
+          <input type="date" id="fechaMantenimiento" name="fechaMantenimiento" [(ngModel)]="mantenimiento.fechaMantenimiento" required placeholder="Seleccione fecha de mantenimiento" title="Seleccione Fecha de Contratacion">
+        </div>
+
+        <div class="input-box">
+          <span class="details">Duracion</span>
+          <input type="text" placeholder="Ingrese la duraccion del mantenimiento" id="duracionMantenimiento" name="duracionMantenimiento" #duracionMantenimiento="ngModel" [(ngModel)]="mantenimiento.duracionMantenimiento" required>
+        </div>
+
+        <div class="input-box">
+          <span class="details">Detalle del mantenimiento</span>
+          <input type="text" placeholder="Ingrese detalle del mantenimiento" id="detallesMantenimiento" name="detallesMantenimiento" #detallesMantenimiento="ngModel" [(ngModel)]="detalleMantenimiento.observaciones" required>
+        </div>
+
+      </div>
+      <div class="container3">
+        <button type="submit" class="btn btn-save center">Guardar Mantenimiento</button>
+      </div>
+
+      
+    </form>
+
+    
+  </div>
+</div>
+

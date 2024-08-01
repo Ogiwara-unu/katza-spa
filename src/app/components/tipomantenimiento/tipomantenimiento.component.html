@@ -1,0 +1,29 @@
+<div class="body">
+  <div class="container2">
+    <div class="title">
+      Agregar Tipo de Mantenimiento
+    </div>
+
+    <form #createTipoMantenimeinto="ngForm" (ngSubmit)="StoreTipoMantenimeinto(createTipoMantenimeinto)">
+      <div class="author-details">
+        <div class="input-box">
+          <span class="details">ID Tipo Mantenimeinto</span>
+          <input type="text" placeholder="Ingrese el ID del tipo de mantenimeinto" id="id" name="id" #id="ngModel" [(ngModel)]="tipoMantenimeinto.idTipoMantenimiento" required>
+        </div>
+
+        <div class="input-box">
+          <span class="details"> Nombre Tipo Mantenimeinto </span>
+          <input type="text" placeholder="Ingrese el nombre del tipo de mantenimeinto" id="name" name="name" #name="ngModel" [(ngModel)]="tipoMantenimeinto.nombre"  required>
+        </div>
+       
+      </div>
+      <div class="container3">
+        <button type="submit" class="btn btn-save center">Guardar Tipo Mantenimiento</button>
+      </div>
+
+
+    </form>
+
+
+  </div>
+</div>

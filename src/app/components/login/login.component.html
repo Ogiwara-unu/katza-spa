@@ -1,0 +1,32 @@
+<div class="wrapper">
+    <div class="container main">
+        <div class="row">
+            <div>
+                <!--No eliminar porque va la imagen de fondo por url-->
+            </div>
+            <div class="col-md-6 right">
+                <div class="input-box">
+                    <h3 class="text-center tittle ">Login</h3>
+                    <!-- Mostrar mensajes de error -->
+                    @if(status===0){
+                        <p>Usuario y/o contraseña incorrecta</p>
+                    }
+                    
+                    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+                        <div class="input-field">
+                            <input type="text" class="input" id="user-name" name="name" #name="ngModel" [(ngModel)]="user.name" required autocomplete="off">
+                            <label for="user-name">User name</label>
+                        </div>
+                        <div class="input-field">
+                            <input type="password" class="input" id="pass" name="password" #password="ngModel" [(ngModel)]="user.password" required>
+                            <label for="pass">Password</label>
+                        </div>
+                        <div class="input-field">
+                            <input type="submit" class="submit" value="Log In">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

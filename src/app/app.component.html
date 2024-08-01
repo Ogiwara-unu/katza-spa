@@ -1,0 +1,38 @@
+<div  class="container-fluid" style="background-color: #31312F; height: 70px;" *ngIf="showNavbar">
+  <nav class="navbar navbar-expand-lg navbar-light ">
+    <div class="container-fluid">
+      <a class="navbar-brand mt-2" href="#">KATZA</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" style="padding-top: 20px; margin-left: 10px;" aria-current="page" [routerLink]="['home']">Inicio</a>
+          </li>
+          <li class="nav-item dropdown" 
+              (mouseenter)="isCategoryHovered = true" 
+              (mouseleave)="isCategoryHovered = false">
+            <a class="nav-link dropdown-toggle mt-2" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Administración
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li *ngFor="let category of categories; let categoryIndex = index" class="dropdown-submenu">
+                <a class="dropdown-item" href="javascript:void(0);">
+                  {{ category.name }}
+                </a>
+                <ul class="dropdown-menu dropdown-menu-right" [class.show]="isCategoryHovered && selectedCategory?.id === category.id" >
+                  <li *ngFor="let subItem of category.subItems">
+                    <a class="dropdown-item" [routerLink]="['/' + subItem]">{{ subItem }}</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<router-outlet></router-outlet>

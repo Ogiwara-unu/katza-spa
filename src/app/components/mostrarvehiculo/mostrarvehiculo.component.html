@@ -1,0 +1,45 @@
+<div class="container mt-5">
+  <div class="input_search">
+    <input id="searchInput" type="text" class="input" [(ngModel)]="searchTerm" (input)="search()" placeholder="Buscar...">
+  </div>
+
+  <div class="buttons-container">
+    <button class="btn btn-primary" (click)="editVehiculo()">Editar</button>
+    <button class="btn btn-danger" (click)="deleteVehiculoa()">Eliminar</button>
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col" class="text-center">#</th>
+        <th scope="col">Placa</th>
+        <th scope="col">Modelo</th>
+        <th scope="col">Marca</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let vehiculo of getPaginatedVehiculos(); let i = index">
+        <td>
+          <div class="form-check">
+            <input id="check{{vehiculo.placaVehiculo}}" class="form-check-input" type="checkbox" (change)="updateSelectedVehiculo(vehiculo.placaVehiculo)">
+            <label class="form-check-label" for="check{{vehiculo.placaVehiculo}}">Seleccionar</label>
+          </div>
+        </td>
+        <td>{{ vehiculo.placaVehiculo }}</td>
+        <td>
+          <span *ngIf="!isEditing(vehiculo.placaVehiculo)">{{ vehiculo.marca }}</span>
+          <input *ngIf="isEditing(vehiculo.placaVehiculo)" id="marca{{vehiculo.placaVehiculo}}" [(ngModel)]="editableVehiculo.marca" type="text" class="form-control" title="Marca">
+        </td>
+        <td>
+          <span *ngIf="!isEditing(vehiculo.placaVehiculo)">{{ vehiculo.modelo }}</span>
+          <input *ngIf="isEditing(vehiculo.placaVehiculo)" id="modelo{{vehiculo.placaVehiculo}}" [(ngModel)]="editableVehiculo.modelo" type="text" class="form-control" title="Modelo">
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div>
+    <button class="buttons" [disabled]="currentPage === 1" (click)="previousPage()">Anterior</button>
+    <button class="buttons" [disabled]="currentPage * itemsPerPage >= filteredVehiculo.length" (click)="nextPage()">Siguiente</button>
+  </div>
+</div>

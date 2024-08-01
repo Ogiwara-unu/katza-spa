@@ -1,0 +1,46 @@
+<div class="container mt-5">
+  <div class="input_search">
+    <input id="searchInput" type="text" class="input" [(ngModel)]="searchTerm" (input)="search()" placeholder="Buscar...">
+  </div>
+
+  <div class="buttons-container">
+    <button class="btn btn-primary" (click)="editTipoMantenimiento()">Editar</button>
+    <button class="btn btn-danger" (click)="deleteTipoMantenimiento()">Eliminar</button>
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col" class="text-center">#</th>
+        <th scope="col">ID Tipo Mantenimiento</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tipoMantenimeinto of getPaginatedTipoMantenimeinto()">
+        <td>
+          <div class="form-check">
+            <input id="check{{tipoMantenimeinto.idTipoMantenimiento}}" class="form-check-input" type="checkbox" (change)="updateSelectedTipoMantenimeinto(tipoMantenimeinto.idTipoMantenimiento)">
+            <label class="form-check-label" for="check{{tipoMantenimeinto.idTipoMantenimiento}}">Seleccionar</label>
+          </div>
+        </td>
+        <td>{{ tipoMantenimeinto.idTipoMantenimiento }}</td>
+        <td>
+          <span *ngIf="!isEditing(tipoMantenimeinto.idTipoMantenimiento)">{{ tipoMantenimeinto.nombre }}</span>
+          <input *ngIf="isEditing(tipoMantenimeinto.idTipoMantenimiento)" id="nombre{{tipoMantenimeinto.idTipoMantenimiento}}" [(ngModel)]="editableTipoMantenimeinto.nombre" type="text" class="form-control" title="Nombre">
+        </td>
+        <td>
+          <button *ngIf="isEditing(tipoMantenimeinto.idTipoMantenimiento)" (click)="saveTipoMantenimeinto(tipoMantenimeinto.idTipoMantenimiento)" class="btn btn-success">Guardar</button>
+          <button *ngIf="isEditing(tipoMantenimeinto.idTipoMantenimiento)" (click)="cancelEdit()" class="btn btn-secondary">Cancelar</button>
+        </td>
+        
+      </tr>
+    </tbody>
+  </table>
+
+  <div>
+    <button class="buttons" [disabled]="currentPage === 1" (click)="previousPage()">Anterior</button>
+    <button class="buttons" [disabled]="currentPage * itemsPerPage >= filteredTipoMantenimiento.length" (click)="nextPage()">Siguiente</button>
+  </div>
+</div>

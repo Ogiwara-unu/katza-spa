@@ -1,0 +1,37 @@
+<div class="body">
+  <div class="container2">
+    <div class="title">
+      Agregar Vehiculo
+    </div>
+
+    <form #createVehiculo="ngForm" (ngSubmit)="StoreVehiculo(createVehiculo)">
+      <div class="author-details">
+        <div class="input-box">
+          <span class="details">Placa Vehiculo </span>
+          <input type="text" placeholder="Ingrese la placa del vehiculo" id="placa" name="placa" #placa="ngModel" [(ngModel)]="vehiculo.placaVehiculo" required>
+        </div>
+     
+        <div class="input-box">
+          <span class="details"> Modelo Vehiculo </span>
+          <input type="text" placeholder="Ingrese el modelo del vehiculo" id="modelo" name="modelo" #modelo="ngModel" [(ngModel)]="vehiculo.modelo"  required>
+        </div>
+
+        <div class="input-box">
+          <span class="details"> Marca vehiculo </span>
+          <input type="text" placeholder="Ingrese la marca del vehiculo" id="marca" name="marca" #marca="ngModel" [(ngModel)]="vehiculo.marca"  required>
+        </div>
+
+
+      </div>
+      <div class="container3">
+        <button type="submit" class="btn btn-save center">Guardar Vehiculo</button>
+      </div>
+
+      
+    </form>
+
+    
+  </div>
+</div>
+
+

@@ -1,0 +1,70 @@
+<div class="container mt-5">
+  <div class="input_search">
+    <input id="searchInput" type="text" class="input" [(ngModel)]="searchTerm" (input)="search()" placeholder="Buscar...">
+  </div>
+
+  <div class="buttons-container">
+    <button class="btn btn-primary" (click)="editEmpleado()">Editar</button>
+    <button class="btn btn-danger" (click)="deleteEmpleados()">Eliminar</button>
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col" class="text-center">#</th>
+        <th scope="col">ID</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellidos</th>
+        <th scope="col">Correo</th>
+        <th scope="col">Telefono</th>
+        <th scope="col">Departamento</th>
+        <th scope="col">Fecha Contratacion</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let empleado of getPaginatedEmpleados()">
+        <td>
+          <div class="form-check">
+            <input id="check{{empleado.idEmpleado}}" class="form-check-input" type="checkbox" (change)="updateSelectedEmpleado(empleado.idEmpleado)">
+            <label class="form-check-label" for="check{{empleado.idEmpleado}}">Seleccionar</label>
+          </div>
+        </td>
+        <td>{{ empleado.idEmpleado }}</td>
+        <td>
+          <span *ngIf="!isEditing(empleado.idEmpleado)">{{ empleado.nombre }}</span>
+          <input *ngIf="isEditing(empleado.idEmpleado)" id="nombre{{empleado.idEmpleado}}" [(ngModel)]="editableEmpleado.nombre" type="text" class="form-control" title="Nombre">
+        </td>
+        <td>
+          <span *ngIf="!isEditing(empleado.idEmpleado)">{{ empleado.apellidos }}</span>
+          <input *ngIf="isEditing(empleado.idEmpleado)" id="apellidos{{empleado.idEmpleado}}" [(ngModel)]="editableEmpleado.apellidos" type="text" class="form-control" title="Apellidos">
+        </td>
+        <td>
+          <span *ngIf="!isEditing(empleado.idEmpleado)">{{ empleado.correo }}</span>
+          <input *ngIf="isEditing(empleado.idEmpleado)" id="correo{{empleado.idEmpleado}}" [(ngModel)]="editableEmpleado.correo" type="text" class="form-control" title="Correo">
+        </td>
+        <td>
+          <span *ngIf="!isEditing(empleado.idEmpleado)">{{ empleado.telefono }}</span>
+          <input *ngIf="isEditing(empleado.idEmpleado)" id="telefono{{empleado.idEmpleado}}" [(ngModel)]="editableEmpleado.telefono" type="text" class="form-control" title="Telefono">
+        </td>
+        <td>
+          <span *ngIf="!isEditing(empleado.idEmpleado)">{{ empleado.nombre_departamento }}</span>
+          <input *ngIf="isEditing(empleado.idEmpleado)" id="departamento{{empleado.idEmpleado}}" [(ngModel)]="editableEmpleado.departamento" type="text" class="form-control" title="Departamento">
+        </td>
+        <td>
+          <span *ngIf="!isEditing(empleado.idEmpleado)">{{ empleado.fechaContratacion }}</span>
+          <input *ngIf="isEditing(empleado.idEmpleado)" id="fechaContratacion{{empleado.idEmpleado}}" [(ngModel)]="editableEmpleado.fechaContratacion" type="text" class="form-control" title="Fecha Contratacion">
+        </td>
+        <td>
+          <button *ngIf="isEditing(empleado.idEmpleado)" (click)="saveEmpleado(empleado.idEmpleado)" class="btn btn-success">Guardar</button>
+          <button *ngIf="isEditing(empleado.idEmpleado)" (click)="cancelEdit()" class="btn btn-secondary">Cancelar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div>
+    <button class="buttons" [disabled]="currentPage === 1" (click)="previousPage()">Anterior</button>
+    <button class="buttons" [disabled]="currentPage * itemsPerPage >= filteredEmpleados.length" (click)="nextPage()">Siguiente</button>
+  </div>
+</div>

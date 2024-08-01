@@ -1,0 +1,49 @@
+<div class="container mt-5">
+  <div class="input_search">
+    <input type="text" class="input" [(ngModel)]="searchTerm" (input)="search()" placeholder="Buscar...">
+  </div>
+
+  <div class="buttons-container">
+    <button class="btn btn-primary" (click)="editDepartamento()">Editar</button>
+    <button class="btn btn-danger" (click)="deleteDepartamentos()">Eliminar</button>
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col" class="text-center">#</th>
+        <th scope="col">ID</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Descripción</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let Departamento of getPaginatedDepartamentos()">
+        <td>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" (change)="updateSelectedDepartamento(Departamento.idDepartamento)">
+            <label class="form-check-label" for="flexCheckDefault"></label>
+          </div>
+        </td>
+        <td>{{ Departamento.idDepartamento }}</td>
+        <td>
+          <span *ngIf="!isEditing(Departamento.idDepartamento)">{{ Departamento.nombre }}</span>
+          <input *ngIf="isEditing(Departamento.idDepartamento)" [(ngModel)]="editableDepartament.nombre" type="text" class="form-control">
+        </td>
+        <td>
+          <span *ngIf="!isEditing(Departamento.idDepartamento)">{{ Departamento.descripcion }}</span>
+          <input *ngIf="isEditing(Departamento.idDepartamento)" [(ngModel)]="editableDepartament.descripcion" type="text" class="form-control">
+        </td>
+        <td>
+          <button *ngIf="isEditing(Departamento.idDepartamento)" (click)="saveDepartamento(Departamento.idDepartamento)" class="btn btn-success">Guardar</button>
+          <button *ngIf="isEditing(Departamento.idDepartamento)" (click)="cancelEdit()" class="btn btn-secondary">Cancelar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div>
+    <button class="buttons" [disabled]="currentPage === 1" (click)="previousPage()">Anterior</button>
+    <button class="buttons" [disabled]="currentPage * itemsPerPage >= filteredDepartamentos.length" (click)="nextPage()">Siguiente</button>
+  </div>
+</div>
