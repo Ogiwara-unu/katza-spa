@@ -64,7 +64,7 @@ export class LoginComponent {
   showAlertSuccess(message: string, icon: 'success' | 'error' | 'warning' | 'info') {
     Swal.fire({
       icon: icon,
-      title: 'Esooo :D',
+      title: 'Exito',
       timer:2000,
       text: message ,
       confirmButtonText: 'Aceptar',

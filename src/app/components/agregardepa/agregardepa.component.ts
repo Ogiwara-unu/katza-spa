@@ -36,7 +36,7 @@ StoreDepartamento(createDepartamento: any) {
       }
     },
     error: (err: any) => {
-      console.error(err);
+      console.error("entro en store departaamento error",err);
       this.showErrorAlert(err);
     }
   });
@@ -44,17 +44,17 @@ StoreDepartamento(createDepartamento: any) {
 
 private showSuccessAlert() {
   Swal.fire({
-    title: 'Departamento agregado :3!',
-    text: 'El departamento ha sido agregado correctamente :3 .',
+    title: 'Departamento agregado!',
+    text: 'El departamento ha sido agregado correctamente!',
     icon: 'success',
     confirmButtonText: 'Aceptar'
   });
 }
 
 private showErrorAlert(error: any) {
-  let errorMessage = 'Hubo un problema al agregar el departamento >:3 .';
+  let errorMessage = 'Hubo un problema al agregar el departamento!.';
   if (error.status === 500) {
-    errorMessage = 'Error del servidor: Datos Repetidos >:3';
+    errorMessage = 'Error del servidor: Datos Repetidos!';
   }
   Swal.fire({
     title: 'Error',
