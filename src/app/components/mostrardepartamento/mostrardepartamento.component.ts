@@ -160,8 +160,8 @@ export class MostrardepartamentoComponent implements OnInit {
 
   private showSuccessAlertDelete() {
     Swal.fire({
-      title: 'Departamentos eliminados! :3',
-      text: 'El departamento ha sido eliminado correctamente :3 .',
+      title: 'Departamentos eliminados!',
+      text: 'El departamento ha sido eliminado correctamente.',
       icon: 'success',
       confirmButtonText: 'Aceptar'
     }).then((result) => {
@@ -198,9 +198,9 @@ export class MostrardepartamentoComponent implements OnInit {
   }
 
   private showErrorAlertDelete(error: any) {
-    let errorMessage = 'Hubo un problema al eliminar el departamento. >:3';
+    let errorMessage = 'Hubo un problema al eliminar el departamento.';
     if (error.status === 500) {
-      errorMessage = 'Error del servidor: No se pudo eliminar el departamento. Intente nuevamente más tarde. >:3';
+      errorMessage = 'Error del servidor: No se pudo eliminar el departamento. Intente nuevamente más tarde.';
     }
     Swal.fire({
       title: 'Error',
