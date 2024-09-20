@@ -1,23 +1,23 @@
 nav {
-  background-color: #222121;
-  height: 70px;
+  height: 120px;
   padding: 0;
   margin: 0;
   
 }
+
 .navbar a {
-  font-size: 1.3em;
+  font-size: 1.8em;
   font-family: Monaco;
-  color: #F2F2F2;
+  color: #222121;
   margin-left: 15px;
 }
 
 .navbar-nav a {
-  font-size: 1.5em;
+  font-size: 1.8em;
   font-family: Monaco;
   border: none;
   outline: none;
-  color: #F2F2F2;
+  color: #222121;
   padding: 12px 14px;
   background-color: inherit;
   margin: 0;
@@ -40,14 +40,17 @@ nav {
 }
 .navbar-nav li:hover, .navbar a:hover{
 
-    background-color: #737373;
+    color: #86bf0a;
 
 }
 .type {
   font-family: Monaco;
   font-size: 1.5em;
 }
-
+.type2 {
+  font-family: Monaco;
+  font-size: 1.6em;
+}
 .dropdown-submenu {
     position: relative;
   }
@@ -64,7 +67,7 @@ nav {
   
 
   .dropdown-menu {
-    background-color: #73706C;
+    background-color: #F2F2F2;
     border: none;
   }
   
@@ -92,3 +95,7 @@ nav {
   margin-top: 0;
 }
 
+footer h5{
+  margin-top: 60px;
+  padding-top: 50px;
+}
