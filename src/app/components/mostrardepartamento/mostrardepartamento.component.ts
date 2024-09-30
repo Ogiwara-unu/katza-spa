@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Departamento } from '../../models/departamento';
 import { DepartamentoService } from '../../services/departamento.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -24,7 +25,8 @@ export class MostrardepartamentoComponent implements OnInit {
   currentPage: number = 1;
   itemsPerPage: number = 5;
   
-  constructor(private departamentoService: DepartamentoService) {}
+  constructor(private departamentoService: DepartamentoService, private _router:Router,
+    private _routes:ActivatedRoute) {}
 
   ngOnInit(): void {
     this.departamentoService.getAllDepartamentos().subscribe({
@@ -125,6 +127,10 @@ export class MostrardepartamentoComponent implements OnInit {
     }
   }
 
+  navigateToAdd(): void {
+    this._router.navigate(['/Agregar-Departamento']);
+  }
+  
   saveDepartamento(DepartamentoId: number) {
     console.log(this.editableDepartament);
     if (this.editableDepartament.idDepartamento !== undefined) {
