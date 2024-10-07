@@ -30,7 +30,7 @@ StoreDepartamento(createDepartamento: any) {
   this.departamentoService.create(this.departamento).subscribe({
     next: (response: any) => {
       if (response.status === 201) {
-        this.showSuccessAlert();
+        this.showAlertSuccess('Se ha Iniciado sesión correctamente', 'success')
         console.log("Se ha agregado con exito");
         createDepartamento.reset();
       }
@@ -47,7 +47,25 @@ private showSuccessAlert() {
     title: 'Departamento agregado!',
     text: 'El departamento ha sido agregado correctamente!',
     icon: 'success',
-    confirmButtonText: 'Aceptar'
+    confirmButtonText: 'Aceptar',
+    
+  });
+}
+
+showAlertSuccess(message: string, icon: 'success' | 'error' | 'warning' | 'info') {
+  Swal.fire({
+    icon: icon,
+    title: 'Exito',
+    timer:2000,
+    text: message ,
+    confirmButtonText: 'Aceptar',
+    didClose : ()=>{
+      window.location.href = '/Mostrar-Departamento'; 
+    } 
+  }).then((result) => {
+    if (result.isConfirmed || result.dismiss === Swal.DismissReason.timer) {
+      window.location.href = '/Mostrar-Departamento';
+    }
   });
 }
 

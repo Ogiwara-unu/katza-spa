@@ -37,7 +37,7 @@ export class LoginComponent {
           console.log(response)
           if (response.status != 401) {
             sessionStorage.setItem("token", response);
-            this.showAlertSuccess('Se ha Iniciado sesión correctamente uwu', 'success')
+            this.showAlertSuccess('Se ha Iniciado sesión correctamente', 'success')
           }else{
             this.status = 0;
             this.showAlert('Usuario y/o contraseña incorrecta', 'error'); // USO SWEETALERT2
@@ -46,7 +46,7 @@ export class LoginComponent {
         },
         error: (err: any) => {
           this.status = 1;
-          this.showAlert('ERROR, error desde el servidor. Contacte a un admin unu', 'error');
+          this.showAlert('ERROR, error desde el servidor. Contacte a un admin', 'error');
         }
       });
 
