@@ -18,7 +18,7 @@ export class AgregarvehiComponent {
   public vehiculo:Vehiculo;
 
   constructor(private router: Router, private vehiculoService: VehiculoService) {
-    this.vehiculo = new Vehiculo (0,"",""); 
+    this.vehiculo = new Vehiculo (0,"","",""); 
   }
 
 
@@ -41,17 +41,17 @@ export class AgregarvehiComponent {
 
   private showSuccessAlert() {
     Swal.fire({
-      title: '¡Vehículo agregado! :3',
-      text: 'El vehículo ha sido agregado correctamente :3 .',
+      title: '¡Vehículo agregado!',
+      text: 'El vehículo ha sido agregado correctamente.',
       icon: 'success',
       confirmButtonText: 'Aceptar'
     });
   }
 
   private showErrorAlert(error: any) {
-    let errorMessage = 'Hubo un problema al agregar el vehículo. >:3';
+    let errorMessage = 'Hubo un problema al agregar el vehículo.';
     if (error.status === 500) {
-      errorMessage = 'Error del servidor: No se pudo agregar el vehículo. Intente nuevamente más tarde. >:3';
+      errorMessage = 'Error del servidor: No se pudo agregar el vehículo. Intente nuevamente más tarde.';
     }
     Swal.fire({
       title: 'Error',

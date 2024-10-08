@@ -23,7 +23,7 @@ export class AgregarempleadoComponent {
 
   constructor(private router: Router, private departamentoService: DepartamentoService
     ,private empleadoService: EmpleadoService) {
-    this.empleado = new Empleado(0, "","","",0,0,new Date()); 
+    this.empleado = new Empleado(0,"","","","",0,0,new Date()); 
   }
   
   ngOnInit(): void {
@@ -61,17 +61,17 @@ StoreEmpleado(form: any) {
 
 private showSuccessAlert() {
   Swal.fire({
-    title: 'Empleado agregado! :3',
-    text: 'El empleado ha sido agregado correctamente. :3',
+    title: 'Empleado agregado!',
+    text: 'El empleado ha sido agregado correctamente.',
     icon: 'success',
     confirmButtonText: 'Aceptar'
   });
 }
 
 private showErrorAlert(error: any) {
-  let errorMessage = 'Hubo un problema al agregar el empleado. >:3';
+  let errorMessage = 'Hubo un problema al agregar el empleado.';
   if (error.status === 500) {
-    errorMessage = 'Error del servidor: Datos Repetidos >:3';
+    errorMessage = 'Error del servidor: Datos Repetidos';
   }
   Swal.fire({
     title: 'Error',

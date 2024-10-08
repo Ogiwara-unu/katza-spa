@@ -1,6 +1,7 @@
 export class Empleado{
     constructor(
         public idEmpleado:number,
+        public cedula:string,
         public nombre:string,
         public apellidos:string,
         public correo:string,

@@ -7,8 +7,8 @@
     <form #createEmpleado="ngForm" (ngSubmit)="StoreEmpleado(createEmpleado)">
       <div class="author-details">
         <div class="input-box">
-          <span class="details">ID Empleado</span>
-          <input type="text" placeholder="Ingrese el ID del empleado" id="id" name="id" #id="ngModel" [(ngModel)]="empleado.idEmpleado" required>
+          <span class="details">Cedula</span>
+          <input type="text" placeholder="Ingrese el ID del empleado" id="cedula" name="cedula" #cedula="ngModel" [(ngModel)]="empleado.cedula" required>
         </div>
      
         <div class="input-box">

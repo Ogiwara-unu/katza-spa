@@ -6,11 +6,6 @@
 
     <form #createMantenimiento="ngForm" (ngSubmit)="StoreMantenimiento(createMantenimiento)">
       <div class="author-details">
-        <div class="input-box">
-          <span class="details">ID Mantenimiento</span>
-          <input type="text" placeholder="Ingrese el ID del mantenimiento" id="id" name="id" #id="ngModel" [(ngModel)]="mantenimiento.idMantenimiento" required>
-        </div>
-     
         <div class="input-box size">
           <label for="VehiculoId" class="details">Vehiculo </label>
           <select id="VehiculoId" name="VehiculoId" [(ngModel)]="mantenimiento.idVehiculo" required>

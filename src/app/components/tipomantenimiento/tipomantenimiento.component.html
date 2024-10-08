@@ -7,11 +7,6 @@
     <form #createTipoMantenimeinto="ngForm" (ngSubmit)="StoreTipoMantenimeinto(createTipoMantenimeinto)">
       <div class="author-details">
         <div class="input-box">
-          <span class="details">ID Tipo Mantenimeinto</span>
-          <input type="text" placeholder="Ingrese el ID del tipo de mantenimeinto" id="id" name="id" #id="ngModel" [(ngModel)]="tipoMantenimeinto.idTipoMantenimiento" required>
-        </div>
-
-        <div class="input-box">
           <span class="details"> Nombre Tipo Mantenimeinto </span>
           <input type="text" placeholder="Ingrese el nombre del tipo de mantenimeinto" id="name" name="name" #name="ngModel" [(ngModel)]="tipoMantenimeinto.nombre"  required>
         </div>

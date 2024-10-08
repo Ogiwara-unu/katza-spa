@@ -43,17 +43,17 @@ StoreTipoMantenimeinto(tipoMantenimeinto: any) {
 
 private showSuccessAlert() {
   Swal.fire({
-    title: 'Nuevo tipo de mantenimiento agregado! :3',
-    text: 'El tipo del mantenimiento  ha sido agregado correctamente. :3',
+    title: 'Nuevo tipo de mantenimiento agregado!',
+    text: 'El tipo del mantenimiento  ha sido agregado correctamente.',
     icon: 'success',
     confirmButtonText: 'Aceptar'
   });
 }
 
 private showErrorAlert(error: any) {
-  let errorMessage = 'Hubo un problema al agregar el tipo mantenimiento. >:3';
+  let errorMessage = 'Hubo un problema al agregar el tipo mantenimiento.';
   if (error.status === 500) {
-    errorMessage = 'Error del servidor: Datos Repetidos >:3';
+    errorMessage = 'Error del servidor: Datos Repetidos.';
   }
   Swal.fire({
     title: 'Error',
