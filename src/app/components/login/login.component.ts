@@ -30,6 +30,10 @@ export class LoginComponent {
     this.user = new User(0, "", "", "");
   } 
 
+  navigateToSingUp(){
+    this. router.navigate(['/Add-UserLogin']);
+  }
+
   onSubmit(form: any) {
 
       this._userService.login(this.user).subscribe({

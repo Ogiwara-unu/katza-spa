@@ -11,6 +11,7 @@ import { AgregarmanteComponent } from './components/agregarmante/agregarmante.co
 import { TipomantenimientoComponent } from './components/tipomantenimiento/tipomantenimiento.component';
 import { MostrartipomantenimientoComponent } from './components/mostrartipomantenimiento/mostrartipomantenimiento.component';
 import { LoginComponent } from './components/login/login.component';
+import { AddUserLoginComponent } from './components/add-user-login/add-user-login.component';
 
 export const routes: Routes = [
 
@@ -27,7 +28,6 @@ export const routes: Routes = [
   { path: 'Agregar-Mantenimiento', component: AgregarmanteComponent },
   { path: 'Mostrar-Mantenimiento', component: MostrarmantenimientoComponent },
   { path: 'Agregar-Tipo-Mantenimeinto',component:TipomantenimientoComponent },
-  { path: 'Mostrar-Tipo-Mantenimiento',component:MostrartipomantenimientoComponent }
-  
-
+  { path: 'Mostrar-Tipo-Mantenimiento',component:MostrartipomantenimientoComponent },
+  { path: 'Add-UserLogin',component:AddUserLoginComponent },
 ];
