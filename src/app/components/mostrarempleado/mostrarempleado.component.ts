@@ -194,6 +194,11 @@ export class MostrarempleadoComponent implements OnInit {
     });
   }
 
+  navigateToAdd(): void {
+    this.router.navigate(['/Agregar-Empleado']);
+  }
+  
+
   private showErrorAlertEdit(error: any) {
     let errorMessage = 'Hubo un problema al editar el empleado.';
     if (error.status === 500) {

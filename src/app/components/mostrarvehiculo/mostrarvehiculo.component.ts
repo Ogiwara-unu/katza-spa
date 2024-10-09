@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Vehiculo } from '../../models/vehiculo';
 import { VehiculoService } from '../../services/vehiculo.service';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mostrarvehiculo',
@@ -26,7 +27,7 @@ export class MostrarvehiculoComponent implements OnInit {
   currentPage: number = 1;
   itemsPerPage: number = 5;
   
-  constructor(private vehiculoService: VehiculoService) {}
+  constructor(private vehiculoService: VehiculoService, private router: Router) {}
 
   ngOnInit(): void {
     this.vehiculoService.getAllVehiculo().subscribe({
@@ -214,6 +215,13 @@ export class MostrarvehiculoComponent implements OnInit {
       confirmButtonText: 'Aceptar'
     });
   }
+
+
+  navigateToAdd(): void {
+    this.router.navigate(['/Agregar-Vehiculo']);
+  }
+
+
 }
 
 

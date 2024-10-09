@@ -4,6 +4,7 @@ import { TipoMantenimiento } from '../../models/tipoMantenimiento';
 import { TipomantenimientoService } from '../../services/tipomantenimiento.service';
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mostrartipomantenimiento',
@@ -26,7 +27,7 @@ export class MostrartipomantenimientoComponent  implements OnInit  {
   currentPage: number = 1;
   itemsPerPage: number = 5
 
-  constructor (private tipomantenimeintoService:TipomantenimientoService){}
+  constructor (private tipomantenimeintoService:TipomantenimientoService, private router: Router){}
 
 
   ngOnInit(): void {
@@ -209,6 +210,9 @@ export class MostrartipomantenimientoComponent  implements OnInit  {
     });
   }
 
+
+  
+
   private showErrorAlertEdit(error: any) {
     let errorMessage = 'Hubo un problema al editar el tipo mantenimiento.';
     if (error.status === 500) {
@@ -220,6 +224,12 @@ export class MostrartipomantenimientoComponent  implements OnInit  {
       icon: 'error',
       confirmButtonText: 'Aceptar'
     });
+  }
+
+
+
+  navigateToAdd(): void {
+    this.router.navigate(['/Agregar-Tipo-Mantenimeinto']);
   }
 
 }

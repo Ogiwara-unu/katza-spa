@@ -1,8 +1,7 @@
 
 .table th{
-  background-color: #222121;
+  background-color: #2E5902;
   color: #F2F2F2;
-  
   font-family: Georgia, serif;
 }
 
@@ -12,9 +11,9 @@
    
   }
   
-  .text-center {
+.text-center {
     text-align: center;
-  }
+}
 .table td:hover {
     background-color: #bdbdbdbf;
 }
@@ -58,17 +57,26 @@
 .buttons-container button{
   outline: none;
   border: none;
-  
   color: #fff;
   border-radius: 10px;
   text-transform: uppercase;
   font-size: 14px;
   cursor: pointer;
+  
+}
+.buttons-container .btn-dark{
+  background-color: #2E5902;
+  margin-right: 7px;
+}
+.buttons-container .btn-primary,
+.buttons-container .btn-danger,
+.btn-dark{
+  background-color: #2E5902;
 }
 .buttons {
   outline: none;
   border: none;
-  background-color: #222121;
+  background-color: #2E5902;
   color: #fff;
   padding: 10px 30px;
   border-radius: 10px;
@@ -77,8 +85,9 @@
   cursor: pointer;
   margin-left: 15px;
   margin-top: 15px;
+  margin: 30px;
 }
-
+q
 .buttons:hover {
   background-color: #4b4a4a;
 }
@@ -103,3 +112,4 @@
   margin-left: 10px;
   
 }
+
