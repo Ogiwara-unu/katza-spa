@@ -36,7 +36,7 @@ export class UserService {
     let options={
         headers
     }
-    return this._http.get(this.urlAPI+'user/getIndetity',options); 
+    return this._http.get(this.urlAPI+'user/getIdentity',options); 
   }
 
 

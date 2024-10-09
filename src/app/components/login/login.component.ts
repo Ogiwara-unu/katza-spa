@@ -41,7 +41,17 @@ export class LoginComponent {
           console.log(response)
           if (response.status != 401) {
             sessionStorage.setItem("token", response);
-            this.showAlertSuccess('Se ha Iniciado sesión correctamente', 'success')
+            this._userService.getIdentityFromAPI().subscribe({
+              next: (resp: any) => {
+                // SE CONVIERTE EL OBJ A UN JSON
+                sessionStorage.setItem('identity', JSON.stringify(resp));
+                console.log("Inicio de sesión exitoso :v");
+                this.showAlertSuccess('Se ha Iniciado sesión correctamente', 'success')
+              },
+              error: (error: Error) => {
+                console.log("Ha Ocurrido un error al acceder a la identidad del usuario"); // MENSAJE DE DEPURACIÓN
+              }
+            });
           }else{
             this.status = 0;
             this.showAlert('Usuario y/o contraseña incorrecta', 'error'); // USO SWEETALERT2
