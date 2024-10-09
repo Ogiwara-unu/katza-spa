@@ -2,7 +2,6 @@
     font-family: Georgia, serif;
 }
 .wrapper{
-    background: #ececec;
     padding: 0 20px 0 20px;
 }
 
@@ -19,7 +18,7 @@
   border-radius: 10px;
   background: #fff;
   padding: 0px;
-  box-shadow: 5px 5px 10px 1px rgba(0,0,0,0.2);
+  box-shadow: 0 0 20px rgba(20, 75, 33, 0.5);
 }
 
 .input-box{

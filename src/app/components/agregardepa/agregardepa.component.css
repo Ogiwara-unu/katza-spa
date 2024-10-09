@@ -20,7 +20,7 @@
     border-radius: 10px;
     font-family: 'Times New Roman', Times, serif;
     font-size: 1.4em;
-    color:#0D0D0D;
+    color: #0D0D0D;
     box-shadow: 0 0 20px rgba(20, 75, 33, 0.5);
 }
 
@@ -43,7 +43,7 @@
 .deparment-form form .button,
 .deparment-form form input {
     width: 100%;
-    padding: .7em;
+    padding: 0.7em;
     border: none;
     outline: 0;
     color: #0D0D0D;
@@ -57,7 +57,6 @@
     text-transform: uppercase;
     padding: 0.5em;
     margin-top: 20px;
-    
 }
 
 .deparment-form h3 {
@@ -74,23 +73,46 @@
     outline: 0;
 }
 
-@media (max-width: 584px){
-    .container2 {
-        max-width: 100%;
+/* Estilos responsive para pantallas medianas */
+@media (max-width: 768px) {
+    .container {
+        max-width: 90%;
+        font-size: 1.2em;
     }
-    form .author-details .input-box {
-        margin: 20px 10px 12px 10px;
-        width: 100%;
-    }
-
-    .container2 form .author-details {
-     max-height:300px ;
-     overflow-y: scroll;
+    
+    .deparment-form form {
+        grid-template-columns: 1fr;
     }
 
-    .author-details::-webkit-scrollbar{
-    width: 0;
+    .form-group {
+        margin: 10px;
     }
 
+    .deparment-form form .button {
+        padding: 0.7em;
+        margin-top: 10px;
+    }
 }
 
+/* Estilos responsive para pantallas pequeñas */
+@media (max-width: 480px) {
+    .container {
+        max-width: 95%;
+        font-size: 1em;
+        padding: 15px;
+    }
+
+    .form-group {
+        margin: 5px;
+    }
+
+    .deparment-form h3 {
+        font-size: 1.2em;
+        margin: 10px;
+    }
+
+    .deparment-form form .button {
+        padding: 0.6em;
+        margin-top: 15px;
+    }
+}
