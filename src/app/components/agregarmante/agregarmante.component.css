@@ -5,6 +5,11 @@
     
 }
 
+select{
+    border-radius: 10px;
+}
+
+
 .body {
     display: flex;
     height: 100vh;
