@@ -1,35 +1,38 @@
-<div class="wrapper">
-    <div class="container main">
-        <div class="row">
-            <div>
-                <!--No eliminar porque va la imagen de fondo por url-->
-            </div>
-            <div class="col-md-6 right">
-                <div class="input-box">
-                    <h3 class="text-center tittle ">Registro</h3>
-                
-                    <form #singUp="ngForm" (ngSubmit)="onSubmit(singUp)">
-                        <div class="input-field">
-                            <input type="text" class="input" id="user-name" name="name" #name="ngModel" [(ngModel)]="user.name" required autocomplete="off">
-                            <label for="user-name">User name</label>
-                        </div>
-
-                        <div class="input-field">
-                            <input type="text" class="input" id="email" name="email" #name="ngModel" [(ngModel)]="user.email" required autocomplete="off">
-                            <label for="email">Email</label>
-                        </div>
-                        
-                        <div class="input-field">
-                            <input type="password" class="input" id="pass" name="password" #password="ngModel" [(ngModel)]="user.password" required>
-                            <label for="pass">Password</label>
-                        </div>
-                        <div class="input-field">
-                            <input type="submit" class="submit" value="Registrar">
-                        </div>
-                    </form>
+<body>
+    <div class="container">
+        <div class="container-form">
+            <div class="container-welcome">
+                <div class="welcome-sign-up welcome">
+                    <h3>¡Hola!</h3>
+                    <p>Regístrese con sus datos personales para</p>
+                    <p>usar todas las funciones del sitio</p>
+                    
                 </div>
             </div>
         </div>
+        <div class="container-form">
+            <form #singUp="ngForm" (ngSubmit)="onSubmit(singUp)">
+                <h2>Registrarse</h2>
+                <span>Use su correo electrónico para registrarse</span>
+                <div class="input-field">
+                    <input type="text" class="input" id="user-name" name="name" #name="ngModel" [(ngModel)]="user.name" required autocomplete="off" placeholder=" ">
+                    <label for="user-name">Usuario</label>
+                </div>
+
+                <div class="input-field mt-5">
+                    <input type="text" class="input" id="email" name="email" #name="ngModel" [(ngModel)]="user.email" required autocomplete="off" placeholder=" ">
+                    <label for="email">Correo</label>
+                </div>
+                
+                <div class="input-field mt-5">
+                    <input type="password" class="input" id="pass" name="password" #password="ngModel" [(ngModel)]="user.password" required   placeholder=" ">
+                    <label for="pass">Contraseña</label>
+                </div>
+                    <input type="submit" class="submit button" value="Registrar">
+            </form>
+        </div>
+
     </div>
-</div>
+</body>
+
 

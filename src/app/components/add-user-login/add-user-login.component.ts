@@ -29,9 +29,6 @@ export class AddUserLoginComponent {
     this.status = -1;
     this.user = new User(0, "", "", "");
   } 
-
-  
-
   onSubmit(form: any) {
 
     this._userService.create(this.user).subscribe({

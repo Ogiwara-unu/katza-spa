@@ -1,37 +1,30 @@
-<div class="wrapper">
-    <div class="container main">
-        <div class="row">
-            <div>
-                <!--No eliminar porque va la imagen de fondo por url-->
-            </div>
-            <div class="col-md-6 right">
-                <div class="input-box">
-                    <h3 class="text-center tittle ">Login</h3>
-                    <!-- Mostrar mensajes de error -->
-                    @if(status===0){
-                        <p>Usuario y/o contraseña incorrecta</p>
-                    }
-                    
-                    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
-                        <div class="input-field">
-                            <input type="text" class="input" id="user-name" name="name" #name="ngModel" [(ngModel)]="user.name" required autocomplete="off">
-                            <label for="user-name">User name</label>
-                        </div>
-                        <div class="input-field">
-                            <input type="password" class="input" id="pass" name="password" #password="ngModel" [(ngModel)]="user.password" required>
-                            <label for="pass">Password</label>
-                        </div>
-                        <div class="input-field">
-                            <input type="submit" class="submit" value="Log In">
-                        </div>
-
-                        <div class="text-center mt-4">
-                            <button type="button" class="btn btn-dark btn-lg mb-4 text-center" (click)="navigateToSingUp()">Reservar</button>
-                        </div>
-                        
-                    </form>
+<body>
+    <div class="container">
+        <div class="container-form">
+            <form class="log-in" #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+                <h2>Iniciar Sesión</h2>
+                <span>Use su correo y contraseña</span>
+                    <div class="input-field mt-4">
+                        <input type="text" class="input" id="user-name" name="name" #name="ngModel" [(ngModel)]="user.name" required autocomplete="off" placeholder=" ">
+                        <label for="user-name">Usuario</label>
+                    </div>
+                    <div class="input-field mt-5">
+                        <input type="password" class="input" id="pass" name="password" #password="ngModel" [(ngModel)]="user.password" required autocomplete="off" placeholder=" ">
+                        <label for="pass">Contraseña</label>
+                    </div>
+                <input type="submit" class="submit button" value="Iniciar Sesión">
+            </form>
+        </div>
+        <div class="container-form">
+            <div class="container-welcome">
+                <div class="welcome-sign-up welcome">
+                    <h3>¡Bienvenido!</h3>
+                    <p>Ingrese sus datos personales para usar</p>
+                    <p>todas las funciones del sitio</p>
+                    <button type="button" class="button2" (click)="navigateToSingUp()">Registrarse</button>
                 </div>
             </div>
+
         </div>
     </div>
-</div>
+</body>
