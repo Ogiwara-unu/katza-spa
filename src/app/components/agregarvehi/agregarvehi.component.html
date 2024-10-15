@@ -7,7 +7,7 @@
       <form #createVehiculo="ngForm" (ngSubmit)="StoreVehiculo(createVehiculo)">
         <p class="form-group">
             <label for="plate">Placa</label>
-            <input type="text" id="placa" class="input" name="placa" #plate="ngModel" [(ngModel)]="vehiculo.placaVehiculo" required>
+            <input type="text" id="placa" class="input" name="placa" #plate="ngModel" [(ngModel)]="vehiculo.placa" required>
         </p>
         <p class="form-group">
           <label for="model">Modelo</label>
@@ -15,7 +15,7 @@
         </p>
         <p class="form-group">
           <label for="brand">Marca</label>
-          <input type="text" id="brand" class="input" name="brand" #brand="ngModel" [(ngModel)]="vehiculo.modelo" required>
+          <input type="text" id="brand" class="input" name="brand" #brand="ngModel" [(ngModel)]="vehiculo.marca" required>
         </p>
        
        
