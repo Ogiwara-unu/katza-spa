@@ -1,57 +1,43 @@
 <div class="body">
-  <div class="container2">
-    <div class="title">
-      Agregar Empleados
-    </div>
-
-    <form #createEmpleado="ngForm" (ngSubmit)="StoreEmpleado(createEmpleado)">
-      <div class="author-details">
-        <div class="input-box">
-          <span class="details">Cedula</span>
-          <input type="text" placeholder="Ingrese el ID del empleado" id="cedula" name="cedula" #cedula="ngModel" [(ngModel)]="empleado.cedula" required>
-        </div>
-     
-        <div class="input-box">
-          <span class="details"> Nombre Empleado </span>
-          <input type="text" placeholder="Ingrese el nombre del empleado" id="name" name="name" #name="ngModel" [(ngModel)]="empleado.nombre"  required>
-        </div>
-
-        <div class="input-box">
-          <span class="details"> Apellido Empleado </span>
-          <input type="text" placeholder="Ingrese el apellido del empleado" id="apellido" name="apellido" #apellido="ngModel" [(ngModel)]="empleado.apellidos"  required>
-        </div>
-
-        <div class="input-box">
-          <span class="details">Correo </span>
-          <input type="text" placeholder="Ingrese el correo del empleado" id="correo" name="correo" #correo="ngModel" [(ngModel)]="empleado.correo" required>
-        </div>
-        <div class="input-box">
-          <span class="details">Telefono </span>
-          <input type="text" placeholder="Ingrese el telefono del empleado" id="telefono" name="telefono" #telefono="ngModel" [(ngModel)]="empleado.telefono" required>
-        </div>
-
-        <div class="input-box">
+  <div class="container">
+    <div class="employee-form">
+      <h3>Agregar Empleado</h3>
+      <form #createEmpleado="ngForm" (ngSubmit)="StoreEmpleado(createEmpleado)">
+        <p class="form-group">
+            <label for="Cedula">Cedula</label>
+            <input type="text" id="Cedula" class="input" name="Cedula" #cedula="ngModel" [(ngModel)]="empleado.cedula" required>
+        </p>
+        <p class="form-group">
+          <label for="name">Nombre Empleado</label>
+          <input type="text" id="name" class="input" name="name" #name="ngModel" [(ngModel)]="empleado.nombre" required>
+        </p>
+        <p class="form-group">
+          <label for="lastname">Apellido Empleado</label>
+          <input type="text" id="lastname" class="input" name="lastname" #lastname="ngModel" [(ngModel)]="empleado.nombre" required>
+        </p>
+        <p class="form-group">
+          <label for="mail">Correo</label>
+          <input type="text" id="mail" class="input" name="mail" #mail="ngModel" [(ngModel)]="empleado.nombre" required>
+        </p>
+        <p class="form-group">
+          <label for="phone">Telefono</label>
+          <input type="text" id="phone" class="input" name="phone" #phone="ngModel" [(ngModel)]="empleado.nombre" required>
+        </p>
+        <p class="form-group input-box">
           <label for="DepartamentoId" class="details">Departamento </label>
           <select id="DepartamentoId" name="DepartamentoId" [(ngModel)]="empleado.departamento" required>
             <option *ngFor="let departamento of Departamentos" [value]="departamento.idDepartamento">{{ departamento.nombre }}</option>
           </select>
-        </div>
-
-        <div class="input-box">
+        </p>
+        <p class="form-group input-box">
           <label for="fechaContratacion" class="details">Fecha de Contratacion</label>
           <input type="date" id="fechaContratacion" name="fechaContratacion" [(ngModel)]="empleado.fechaContratacion" required placeholder="Seleccione fecha contratacion" title="Seleccione Fecha de Contratacion">
-        </div>
-
-
-      </div>
-      <div class="container3">
-        <button type="submit" class="btn btn-save center">Guardar Empleado</button>
-      </div>
-
-      
-    </form>
-
-    
+        </p>
+        
+        <p class="block button-group">
+          <button type="submit" class="button">Guardar</button>
+        </p>
+      </form>
+    </div>
   </div>
 </div>
-

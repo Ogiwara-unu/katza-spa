@@ -7,120 +7,113 @@
 
 .body {
     display: flex;
-    height: 100vh;
+    height: 150vh;
     justify-content: center;
     align-items: center;
     padding: 10px;
-    background-color: #F2F2F2;
 }
 
-.container2 {
+.container {
     max-width: 700px;
     width: 100%;
     padding: 25px 30px;
     border-radius: 10px;
-    background-color: #F2F2F2;
-    box-shadow: 0 0 20px rgba(50, 50, 50, 0.5);
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.4em;
+    color: #0D0D0D;
+    box-shadow: 0 0 20px rgba(20, 75, 33, 0.5);
 }
 
-.title {
+.employee-form form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1em;
+}
+
+.form-group {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 30px;
-    font-weight: 500;
-    margin-bottom: 20px;
+    flex-direction: column;
+    margin: 20px;
 }
 
-.icon-title {
-    height: 50px;
-    margin-right: 10px;
+.button-group {
+    grid-column: span 2;
 }
 
-.container2 form .author-details {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-form .author-details .input-box {
-    margin: 20px 10px 12px 10px;
-    width: calc(50% - 20px);
-}
-
-.author-details .input-box .details {
-    display: block;
-    font-weight: 700;
-    margin-bottom: 5px;
-}
-
-.author-details .input-box input {
-    height: 45px;
+.employee-form form .button,
+.employee-form form input {
     width: 100%;
-    padding: 5px;
-    font-size: 16px;
-    border: 1px solid #222121;
-    background-color: #F2F2F2;
-    border-radius: 5px;
+    padding: 0.7em;
+    border: none;
+    outline: 0;
+    color: #0D0D0D;
+    border-bottom: 1px solid #737373;
 }
 
-.container3 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.container3 .btn-save {
+.employee-form form .button {
+    color: #0D0D0D;
+    background-color: #68A629;
+    border: 0;
+    text-transform: uppercase;
+    padding: 0.5em;
     margin-top: 20px;
+}
+
+.employee-form h3 {
     text-align: center;
-    position: relative;
-    background-color: initial;
-    padding: 10px 20px;
-    font-size: 20px;
-    border: 2px solid #222121;
-    border-radius: 5px;
-    cursor: pointer;
+    margin: 20px;
+    padding: 1em;
 }
 
-.container3 .btn-save:hover {
-    background-color: #222121;
-    color: white;
+.employee-form form .button:hover,
+.employee-form form .button:focus {
+    background-color: #2E5902;
+    color: #F2F2F2;
+    transition: background-color ease-out, border 1s ease-out;
+    outline: 0;
 }
 
-select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    color: #555;
-    background-color: #F2F2F2;
-    height: 42px;
-
-  }
-
-  select:focus {
-    outline: none;
-    border-color: black; 
-  }
-
-
-@media (max-width: 584px){
-    .container2 {
-        max-width: 100%;
+/* Estilos responsive para pantallas medianas */
+@media (max-width: 768px) {
+    .container {
+        max-width: 90%;
+        font-size: 1.2em;
     }
-    form .author-details .input-box {
-        margin: 20px 10px 12px 10px;
-        width: 100%;
+    
+    .employee-form form {
+        grid-template-columns: 1fr;
     }
 
-    .container2 form .author-details {
-     max-height:300px ;
-     overflow-y: scroll;
+    .form-group {
+        margin: 10px;
     }
 
-    .author-details::-webkit-scrollbar{
-    width: 0;
+    .employee-form form .button {
+        padding: 0.7em;
+        margin-top: 10px;
     }
-
 }
+
+/* Estilos responsive para pantallas pequeñas */
+@media (max-width: 480px) {
+    .container {
+        max-width: 95%;
+        font-size: 1em;
+        padding: 15px;
+    }
+
+    .form-group {
+        margin: 5px;
+    }
+
+    .employee-form h3 {
+        font-size: 1.2em;
+        margin: 10px;
+    }
+
+    .employee-form form .button {
+        padding: 0.6em;
+        margin-top: 15px;
+    }
+}
+
