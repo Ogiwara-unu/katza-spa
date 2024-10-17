@@ -11,25 +11,10 @@
             <li class="nav-item">
               <a class="nav-link active" style="padding-top: 20px; margin-left: 10px;" aria-current="page" [routerLink]="['home']">Inicio</a>
             </li>
-            <li class="nav-item dropdown" 
-                (mouseenter)="isCategoryHovered = true" 
-                (mouseleave)="isCategoryHovered = false">
-              <a class="nav-link dropdown-toggle mt-2" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Administración
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li *ngFor="let category of categories; let categoryIndex = index" class="dropdown-submenu">
-                  <a class="dropdown-item" href="javascript:void(0);">
-                    {{ category.name }}
-                  </a>
-                  <ul class="dropdown-menu dropdown-menu-right" [class.show]="isCategoryHovered && selectedCategory?.id === category.id" >
-                    <li *ngFor="let subItem of category.subItems">
-                      <a class="dropdown-item" [routerLink]="['/' + subItem]">{{ subItem }}</a>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
+            <li class="nav-item">
+              <a class="nav-link active" style="padding-top: 20px; margin-left: 10px;" aria-current="page" [routerLink]="['Administracion']">Administracion</a>
             </li>
+           
           </ul>
 
           <ul *ngIf="identity" class="navbar-nav ms-auto">

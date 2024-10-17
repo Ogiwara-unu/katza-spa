@@ -29,6 +29,7 @@ export class AppComponent implements OnInit, OnDestroy {
     { id: 1, name: 'Departamento', subItems: ['Agregar-Departamento', 'Mostrar-Departamento'] },
     { id: 2, name: 'Empleado', subItems: ['Agregar-Empleado', 'Mostrar-Empleado'] },
     { id: 5, name: 'Tipo-Mantenimeinto', subItems: ['Agregar-Tipo-Mantenimeinto', 'Mostrar-Tipo-Mantenimiento'] },
+    { id: 5, name: 'Prueba', subItems: ['Administracion', 'Administracion'] },
   ];
 
   selectedCategory: { id: number; name: string; subItems: string[] } | null = null;
