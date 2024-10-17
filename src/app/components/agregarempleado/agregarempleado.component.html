@@ -13,15 +13,15 @@
         </p>
         <p class="form-group">
           <label for="lastname">Apellido Empleado</label>
-          <input type="text" id="lastname" class="input" name="lastname" #lastname="ngModel" [(ngModel)]="empleado.nombre" required>
+          <input type="text" id="lastname" class="input" name="lastname" #lastname="ngModel" [(ngModel)]="empleado.apellidos" required>
         </p>
         <p class="form-group">
           <label for="mail">Correo</label>
-          <input type="text" id="mail" class="input" name="mail" #mail="ngModel" [(ngModel)]="empleado.nombre" required>
+          <input type="text" id="mail" class="input" name="mail" #mail="ngModel" [(ngModel)]="empleado.correo" required>
         </p>
         <p class="form-group">
           <label for="phone">Telefono</label>
-          <input type="text" id="phone" class="input" name="phone" #phone="ngModel" [(ngModel)]="empleado.nombre" required>
+          <input type="text" id="phone" class="input" name="phone" #phone="ngModel" [(ngModel)]="empleado.telefono" required>
         </p>
         <p class="form-group input-box">
           <label for="DepartamentoId" class="details">Departamento </label>
