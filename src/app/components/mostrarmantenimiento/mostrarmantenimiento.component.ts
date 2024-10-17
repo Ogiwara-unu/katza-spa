@@ -306,5 +306,10 @@ export class MostrarmantenimientoComponent implements OnInit {
       confirmButtonText: 'Aceptar'
     });
   }
+
+  navigateToAdd(): void {
+    this.router.navigate(['/Agregar-Mantenimiento']);
+  }
+
 }
 
