@@ -13,6 +13,8 @@ import { MostrartipomantenimientoComponent } from './components/mostrartipomante
 import { LoginComponent } from './components/login/login.component';
 import { AdminViewComponent } from './components/admin-view/admin-view.component';
 import { AddUserLoginComponent } from './components/add-user-login/add-user-login.component';
+import { BackupRestoreComponent } from './components/backup-restore/backup-restore.component';
+import { RestoreComponent } from './components/restore/restore.component';
 
 export const routes: Routes = [
 
@@ -32,5 +34,6 @@ export const routes: Routes = [
   { path: 'Mostrar-Tipo-Mantenimiento',component:MostrartipomantenimientoComponent },
   { path: 'Administracion',component:AdminViewComponent },
   { path: 'Add-UserLogin',component:AddUserLoginComponent },
- 
+  { path: 'backUp-restore',component:BackupRestoreComponent },
+  { path: 'restore',component:RestoreComponent },
 ];
