@@ -1,60 +1,73 @@
-#galeria .col-lg-4, #anuncios col-lg-6, #galeria2 .col-lg-4{
-    padding: 25px;
-    margin: 0 !important;
-    }
-    #anuncios img {
-      width: 90%;
-      height: 500px;
-    }
-    #galeria img{
-      width: 100%;
-      height: 350px;
-    }
-    #galeria2{
-      background-color: #F2F2F2;
-      padding: 20px;
-    }
-    #galeria h1, #galeria2 h1, #galeria2 p{
-      font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-      line-height: 1.4;
-      text-align: center;
-      align-content: center;
-      
-    }
-  /* General styles for anuncios section */
-#prueba{
-  background-color: #F2F2F2;
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+
+body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden; /* Elimina el scrollbar horizontal no deseado */
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+/* Contenedor principal */
+#container {
+  position: relative;
+  width: 100vw; /* Ancho completo del viewport */
+  height: 60vh; /* Alto relativo al viewport */
+  overflow: hidden; /* Asegura que no haya desplazamiento */
+}
+
+#container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw; /* Cubre todo el ancho del viewport */
+  height: 100%; /* Cubre el alto del contenedor */
+  object-fit: cover; /* Asegura que la imagen cubra todo el contenedor sin deformarse */
+  z-index: 1; /* Imagen detrás del texto */
+}
+
+#container .capa {
+  position: relative;
+  z-index: 2; /* Texto sobre la imagen */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.4); /* Fondo semitransparente */
+}
+
+#container h1 {
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+#container p {
+  width: 80%;
+  font-size: 1.7rem;
+  text-align: center;
+  line-height: 1.3;
+}
+
+/* Sección de anuncios */
 #anuncios {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   padding: 20px;
+  width: 100%;
 }
 
 #anuncios .col-lg-6 {
-  flex: 1;
+  flex: 1 1 45%;
   margin: 10px;
-}
-
-#anuncios h2 {
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  font-weight: bold;
-  text-align: center;
-  font-size: 2rem;
-
-}
-
-#anuncios h2:first-child {
-  color: #222121; /* Pinkish color for Misión */
-
-}
-
-#anuncios p {
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #555555;
-  text-align: justify;
 }
 
 #anuncios img {
@@ -63,19 +76,51 @@
   margin-bottom: 20px;
 }
 
-/* Custom styling for mission and vision texts */
-.mision-text {
-  background-color: #F8E6FF;
-  padding: 5px;
-  border-radius: 5px;
-  font-weight: bold;
+#anuncios h2 {
+  font-size: 2rem;
+  text-align: center;
 }
 
-.vision-text {
-  background-color: #EBF4FF;
-  padding: 5px;
-  border-radius: 5px;
-  font-weight: bold;
+#anuncios p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #555555;
+  text-align: justify;
+  margin-top: 10px;
 }
 
-    
+/* Responsividad */
+@media (max-width: 768px) {
+  #container {
+    height: 50vh;
+  }
+
+  #container h1 {
+    font-size: 2rem;
+  }
+
+  #container p {
+    font-size: 1rem;
+    width: 90%;
+  }
+
+  #anuncios .col-lg-6 {
+    flex: 1 1 100%;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  #container {
+    height: 40vh;
+  }
+
+  #container h1 {
+    font-size: 1.8rem;
+  }
+
+  #container p {
+    font-size: 0.9rem;
+    width: 95%;
+  }
+}

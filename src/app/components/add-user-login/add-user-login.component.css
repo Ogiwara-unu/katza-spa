@@ -1,40 +1,47 @@
+/* Estilos generales */
 * {
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    margin:0;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-body{
+
+body {
     width: 100%;
     height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.container{
-    width: 800px;
+
+.container {
+    width: 800px; /* Ancho predeterminado para pantallas grandes */
     height: 500px;
     display: flex;
+    flex-direction: row;
     box-shadow: 0 0 20px rgba(20, 75, 33, 0.5);
     border-radius: 5px;
 }
-.container-form{
-    
+
+.container-form {
     width: 100%;
 }
-.container-form form{
+
+.container-form form {
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-.container-form h2{
+
+.container-form h2 {
     font-size: 35px;
     font-weight: bold;
     margin-bottom: 20px;
 }
-.container-form span{
+
+.container-form span {
     margin-top: 5px;
     font-size: 18px;
     margin-bottom: 25px;
@@ -61,7 +68,6 @@ body{
     border-bottom: 1px solid #743ae1;
 }
 
-/* Aquí se posiciona el label sobre el input inicialmente */
 .input-field label {
     position: absolute;
     top: 50%;
@@ -73,7 +79,6 @@ body{
     color: #a3a3a3;
 }
 
-/* Mover el label cuando el input está enfocado o tiene texto */
 .input:focus ~ label,
 .input:not(:placeholder-shown) ~ label {
     top: -20px;
@@ -81,7 +86,7 @@ body{
     color: #5d5076;
 }
 
-.container-form .button{
+.container-form .button {
     width: 170px;
     height: 45px;
     font-size: 20px;
@@ -91,18 +96,16 @@ body{
     margin-top: 30px;
     background-color: #2E5902;
     color: #F2F2F2;
-    
 }
-.container-form .button:hover{
+
+.container-form .button:hover {
     background-color: #68A629;
     color: #090909;
     transition: background-color ease-out, border 1s ease-out;
     outline: 0;
 }
 
-
-/**/
-.container-welcome{
+.container-welcome {
     width: 100%;
     height: 100%;
     background-color: #2E5902;
@@ -110,9 +113,11 @@ body{
     justify-content: center;
     align-items: center;
     border-radius: 0 50% 50% 0;
-
+    position: relative;
+    z-index: 1;
 }
-.container-welcome .welcome{
+
+.container-welcome .welcome {
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -120,22 +125,65 @@ body{
     padding: 0 50px;
     color: white;
 }
-.container-welcome h3{
+
+.container-welcome h3 {
     margin-bottom: 30px;
     font-size: 40px;
-
 }
-.container-welcome p{
+
+.container-welcome p {
     font-size: 20px;
     text-align: center;
 }
-.container-welcome .button2{
-    border: 2px solid white;
-    background-color: #2E5902;
-    margin-top: 30px;
-    color: white;
-    width: 170px;
-    height: 45px;
-    font-size: 20px;
-    border-radius: 5px;
+
+
+
+/* Media Queries para responsividad */
+@media (max-width: 768px) {
+    .container {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        flex-direction: column;
+        height: auto; 
+        width: 100%; 
+        box-shadow: none; 
+        border-radius: 0; 
+    }
+
+    .container-welcome {
+        height: auto; 
+        padding: 70px; 
+        width: 100%;
+        border-radius: 0;
+    }
+
+    .container-welcome h3 {
+        font-size: 30px; /* Reduce el tamaño de la fuente en pantallas pequeñas */
+    }
+
+    .container-welcome p {
+        font-size: 16px; /* Ajusta el tamaño de la fuente del texto */
+    }
+    .container-form{
+        height: auto;
+        margin-top: 10px;
+    }
+    .container-form h2 {
+        font-size: 28px; /* Reduce el tamaño de la fuente para el título */
+    }
+
+    .container-form span {
+        font-size: 16px; /* Ajusta el tamaño del texto */
+    }
+
+    .input {
+        font-size: 1em; /* Ajusta el tamaño del texto del input */
+    }
+
+    .container-form .button {
+        width: 100%; /* Hace el botón del 100% del ancho */
+        margin-bottom: 20px;
+    }
+
+
 }

@@ -9,17 +9,25 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" style="padding-top: 20px; margin-left: 10px;" aria-current="page" [routerLink]="['home']">Inicio</a>
+              <a class="nav-link active" aria-current="page" [routerLink]="['home']">Inicio</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" style="padding-top: 20px; margin-left: 10px;" aria-current="page" [routerLink]="['Administracion']">Administracion</a>
+              <a class="nav-link active" aria-current="page" [routerLink]="['Administracion']">Administracion</a>
             </li>
-           
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="activosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Activos
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="activosDropdown">
+                <li><a class="dropdown-item" href="#" [routerLink]="['dispositivos']">Dispositivos</a></li>
+                <li><a class="dropdown-item" href="#" [routerLink]="['Mostrar-Vehiculo']">Vehículos</a></li>
+              </ul>
+            </li>
           </ul>
 
           <ul *ngIf="identity" class="navbar-nav ms-auto">
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" ><i class="bi bi-person-circle"></i>
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-person-circle"></i>
                 {{ identity.name }}
               </a>
               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -27,53 +35,49 @@
                 <li><a class="dropdown-item" href="/backUp-restore">BackUps</a></li>
                 <li><a class="dropdown-item" href="/restore">Reestablecer</a></li>
               </ul>
-              
             </li>
           </ul>
-
         </div>
       </div>
     </nav>
   </div>
-
   <router-outlet></router-outlet>
-
-   <!-- Footer -->
- <footer class="row">
-  <div class="container-fluid p-5 text-white" style="background-color: #31312F;">
-    <div class="row">
-      <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 text-center">
-        <img src="../assets/img/2.png" alt="Logo" class="img-fluid">
-      </div>
-      <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-        <h5 class="type2">Contactos</h5>
-        <ul class="list-unstyled mb-0">
-          <li><a class="text-white text-decoration-none type">Sugerencias: </a> <a href="#" class="text-white text-decoration-none type">katza.com</a></li>
-          <li><a class="text-white text-decoration-none type">Teléfono: </a> <a href="#" class="text-white text-decoration-none type">+506 2233 4455</a></li>
-          <li><a class="text-white text-decoration-none type">Correo: </a> <a href="#" class="text-white text-decoration-none type">info.katza.com</a></li>
-        </ul>
-      </div>
-      <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-        <h5 class="type2">Links</h5>
-        <ul class="list-unstyled mb-0">
-          <li><a href="#" class="text-white text-decoration-none type">Terms & Conditions</a></li>
-          <li><a href="#" class="text-white text-decoration-none type">Privacy Policy</a></li>
-        </ul>
-      </div>
-      <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-        <h5 class="type2">Creadores</h5>
-        <ul class="list-unstyled mb-0">
-          <li><a class="text-white text-decoration-none type">Randall Álvarez</a></li>
-          <li><a class="text-white text-decoration-none type">Camilo Redondo</a></li>
-          <li><a class="text-white text-decoration-none type">Nathali Chacón</a></li>
-          <li><a class="text-white text-decoration-none type">Christian Chaves</a></li>
-          <li><a class="text-white text-decoration-none type">Lelany Fernández</a></li>
-        </ul>
+  <footer class="row mt-4">
+    <div class="container-fluid p-5 text-white" style="background-color: #31312F;">
+      <div class="row text-center text-md-start">
+        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+          <img src="../assets/img/2.png" alt="Logo" class="img-fluid">
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+          <h5 class="type2">Contactos</h5>
+          <ul class="list-unstyled mb-0">
+            <li><a class="text-white text-decoration-none type">Sugerencias: </a> <a href="#" class="text-white text-decoration-none type">katza.com</a></li>
+            <li><a class="text-white text-decoration-none type">Teléfono: </a> <a href="#" class="text-white text-decoration-none type">+506 2233 4455</a></li>
+            <li><a class="text-white text-decoration-none type">Correo: </a> <a href="#" class="text-white text-decoration-none type">info.katza.com</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+          <h5 class="type2">Links</h5>
+          <ul class="list-unstyled mb-0">
+            <li><a href="#" class="text-white text-decoration-none type">Terms & Conditions</a></li>
+            <li><a href="#" class="text-white text-decoration-none type">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+          <h5 class="type2">Creadores</h5>
+          <ul class="list-unstyled mb-0">
+            <li><a class="text-white text-decoration-none type">Randall Álvarez</a></li>
+            <li><a class="text-white text-decoration-none type">Camilo Redondo</a></li>
+            <li><a class="text-white text-decoration-none type">Nathali Chacón</a></li>
+            <li><a class="text-white text-decoration-none type">Christian Chaves</a></li>
+            <li><a class="text-white text-decoration-none type">Lelany Fernández</a></li>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="container-fluid text-center text-white py-3" style="background-color:#262626;">
-    © 2024 Derechos Reservados: <a href="https://tusitio.com/" class="text-white text-decoration-none">katza.com</a>
-  </div>
+    <div class="container-fluid text-center text-white py-3" style="background-color:#262626;">
+      © 2024 Derechos Reservados: <a href="https://tusitio.com/" class="text-white text-decoration-none">katza.com</a>
+    </div>
   </footer>
+  
 </body>

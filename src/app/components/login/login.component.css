@@ -139,3 +139,55 @@ body{
     font-size: 20px;
     border-radius: 5px;
 }
+/* Media Queries para responsividad */
+@media (max-width: 768px) {
+    .container {
+        margin-top: 20px;
+        margin-bottom: 30px;
+        flex-direction: column;
+        height: auto; 
+        width: 100%; 
+        box-shadow: none; 
+        border-radius: 0; 
+    }
+
+    .container-welcome {
+        height: auto; 
+        padding: 25%; 
+        width: 100%;
+        border-radius: 0;
+    }
+
+    .container-welcome h3 {
+        font-size: 30px; /* Reduce el tamaño de la fuente en pantallas pequeñas */
+    }
+
+    .container-welcome p {
+        font-size: 16px; /* Ajusta el tamaño de la fuente del texto */
+    }
+    .container-form{
+        height: auto;
+        margin-bottom: 20px;
+    }
+    .container-form h2 {
+        font-size: 28px; /* Reduce el tamaño de la fuente para el título */
+    }
+
+    .container-form span {
+        font-size: 16px; /* Ajusta el tamaño del texto */
+    }
+
+    .input {
+        font-size: 1em; /* Ajusta el tamaño del texto del input */
+    }
+
+    .container-form .button {
+        width: 100%; /* Hace el botón del 100% del ancho */
+        margin-bottom: 20px;
+    }
+    .container-welcome .button2 {
+        height: auto;
+        margin: 0;
+        width: 100%; /* Ajusta el ancho del segundo botón */
+    }
+}

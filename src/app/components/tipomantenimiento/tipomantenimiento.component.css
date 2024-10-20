@@ -48,8 +48,9 @@
 }
 
 .types-form form .button {
-    color: #0D0D0D;
-    background-color: #68A629;
+    background-color: #2E5902;
+    color: #F2F2F2;
+
     border: 0;
     text-transform: uppercase;
     padding: 0.5em;
@@ -65,8 +66,8 @@
 
 .types-form form .button:hover,
 .types-form form .button:focus {
-    background-color: #2E5902;
-    color: #F2F2F2;
+    color: #0D0D0D;
+    background-color: #68A629;
     transition: background-color ease-out, border 1s ease-out;
     outline: 0;
 }
