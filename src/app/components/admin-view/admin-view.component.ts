@@ -45,6 +45,12 @@ export class AdminViewComponent {
   navigateToAddPrestamoDispositivo(): void {
     this.router.navigate(['/Mostrar-Prestamo-Dispositivo']);
   }
+  navigateToAddMarcaRepuestos(): void {
+    this.router.navigate(['/Mostrar-Marca-Respuesto']);
+  }
+  navigateToAddModeloRepuesto(): void {
+    this.router.navigate(['/Mostrar-Modelo-Repuesto']);
+  }
 
 constructor(private router: Router) {}
 
