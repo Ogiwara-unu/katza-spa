@@ -1,1 +1,29 @@
-<p>agregarmodelorepuesto works!</p>
+
+<div class="body">
+    <div class="container">
+      <div class="modelorepuesto-form">
+        <h3>Agregar Modelo Repuesto</h3>
+        <form #createModeloRepuesto="ngForm" (ngSubmit)="StoreModeloRepuesto(createModeloRepuesto)">
+          <p class="form-group">
+              <label for="id">Id Modelo Repuesto</label>
+              <input type="number" id="id" class="input" name="id" #id="ngModel" [(ngModel)]="modeloRepuesto.idModeloRepuesto" required>
+          </p>
+          <p class="form-group">
+            <label for="model">Modelo</label>
+            <input type="text" id="model" class="input" name="model" #model="ngModel" [(ngModel)]="modeloRepuesto.modelo" required>
+          </p>
+          <p class="form-group">
+            <label for="marca">Marca</label>
+            <input type="text" id="marca" class="input" name="marca" #marca="ngModel" [(ngModel)]="modeloRepuesto.marca" required>
+          </p>
+          
+          <p class="block button-group">
+            <button type="submit" class="button">Guardar</button>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  
+  

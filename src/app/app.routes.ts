@@ -21,7 +21,7 @@ import { AgregarrepuestoComponent } from './components/agregarrepuesto/agregarre
 import { MostrarrepuestoComponent } from './components/mostrarrepuesto/mostrarrepuesto.component';
 import { AgregartipodispositivoComponent } from './components/agregartipodispositivo/agregartipodispositivo.component';
 import { MostrartipodispositivoComponent } from './components/mostrartipodispositivo/mostrartipodispositivo.component';
-import { AgregartiporespuestoComponent } from './components/agregartiporespuesto/agregartiporespuesto.component';
+import { AgregartiporepuestoComponent } from './components/agregartiporepuesto/agregartiporepuesto.component';
 import { MostrartiporespuestoComponent } from './components/mostrartiporespuesto/mostrartiporespuesto.component';
 import { AgregarprestamodispositivoComponent } from './components/agregarprestamodispositivo/agregarprestamodispositivo.component';
 import { MostrarprestamodispositivoComponent } from './components/mostrarprestamodispositivo/mostrarprestamodispositivo.component';
@@ -31,6 +31,7 @@ import { AgregarmarcarepuestosComponent } from './components/agregarmarcarepuest
 import { MostrarmarcarepuestosComponent } from './components/mostrarmarcarepuestos/mostrarmarcarepuestos.component';
 import { AgregardispositivosComponent } from './components/agregardispositivos/agregardispositivos.component';
 import { MostrardispositivosComponent } from './components/mostrardispositivos/mostrardispositivos.component';
+
 
 export const routes: Routes = [
 
@@ -53,10 +54,19 @@ export const routes: Routes = [
   { path: 'backUp-restore',component:BackupRestoreComponent },
   { path: 'restore',component:RestoreComponent },
   {path:'Mostrar-Prestamo-Vehiculo',component:MostrarprestamovehiculoComponent},
+  {path:'Agregar-Prestamo-Vehiculo',component:AgregarprestamovehiculoComponent},
   {path:'Mostrar-Repuesto',component:MostrarrepuestoComponent},
+  {path:'Agregar-Repuesto',component:AgregarrepuestoComponent},
   {path:'Mostrar-Tipo-Repuesto',component:MostrartiporespuestoComponent},
-  {path:'Mostrar-Dispositvo',component:MostrardispositivosComponent},
+  {path:'Agregar-Tipo-Repuesto',component:AgregartiporepuestoComponent},
+  {path:'Mostrar-Dispositivo',component:MostrardispositivosComponent},
+  {path:'Agregar-Dispositivo',component:AgregardispositivosComponent},
   {path:'Mostrar-Prestamo-Dispositivo',component:MostrarprestamodispositivoComponent},
-  {path:'Mostrar-Marca-Respuesto',component:MostrarmarcarepuestosComponent},
+  {path:'Agregar-Prestamo-Dispositivo',component:AgregarprestamodispositivoComponent},
+  {path:'Mostrar-Marca-Repuesto',component:MostrarmarcarepuestosComponent},
+  {path:'Agregar-Marca-Repuesto',component:AgregarmarcarepuestosComponent},
   {path:'Mostrar-Modelo-Repuesto',component:MostrarmodelorepuestoComponent},
+  {path:'Agregar-Modelo-Repuesto',component:AgregarmodelorepuestoComponent},
+  {path:'Mostrar-Tipo-Dispositivo',component:MostrartipodispositivoComponent},
+  {path:'Agregar-Tipo-Dispositivo',component:AgregartipodispositivoComponent},
 ];

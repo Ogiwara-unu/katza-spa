@@ -39,17 +39,20 @@ export class AdminViewComponent {
   navigateToAddTipoRepuesto(): void {
     this.router.navigate(['/Mostrar-Tipo-Repuesto']);
   }
-  navigateToAddDispositivo(): void {
+  navigateToAddDispositivos(): void {
     this.router.navigate(['/Mostrar-Dispositvo']);
   }
   navigateToAddPrestamoDispositivo(): void {
     this.router.navigate(['/Mostrar-Prestamo-Dispositivo']);
   }
   navigateToAddMarcaRepuestos(): void {
-    this.router.navigate(['/Mostrar-Marca-Respuesto']);
+    this.router.navigate(['/Mostrar-Marca-Repuesto']);
   }
   navigateToAddModeloRepuesto(): void {
     this.router.navigate(['/Mostrar-Modelo-Repuesto']);
+  }
+  navigateToAddTipoDispositivo(): void {
+    this.router.navigate(['/Mostrar-Tipo-Dispositivo']);
   }
 
 constructor(private router: Router) {}

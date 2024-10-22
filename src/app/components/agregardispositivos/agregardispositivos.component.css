@@ -1,0 +1,120 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Georgia, serif;
+}
+
+.body {
+    display: flex;
+    height: 150vh;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.container {
+    max-width: 700px;
+    width: 100%;
+    padding: 25px 30px;
+    border-radius: 10px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.4em;
+    color: #0D0D0D;
+    box-shadow: 0 0 20px rgba(20, 75, 33, 0.5);
+}
+
+.dispositivo-form form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1em;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.button-group {
+    grid-column: span 2;
+}
+
+.dispositivo-form form .button,
+.dispositivo-form form input {
+    width: 100%;
+    padding: 0.7em;
+    border: none;
+    outline: 0;
+    color: #0D0D0D;
+    border-bottom: 1px solid #737373;
+}
+
+.dispositivo-form form .button {
+    background-color: #2E5902;
+    color: #F2F2F2;
+
+    border: 0;
+    text-transform: uppercase;
+    padding: 0.5em;
+    margin-top: 20px;
+}
+
+.dispositivo-form h3 {
+    text-align: center;
+    margin: 20px;
+    padding: 1em;
+}
+
+.dispositivo-form form .button:hover,
+.dispositivo-form form .button:focus {
+    color: #0D0D0D;
+    background-color: #68A629;
+    transition: background-color ease-out, border 1s ease-out;
+    outline: 0;
+}
+
+/* Estilos responsive para pantallas medianas */
+@media (max-width: 768px) {
+    .container {
+        max-width: 90%;
+        font-size: 1.2em;
+    }
+    
+    .dispositivo-form form {
+        grid-template-columns: 1fr;
+    }
+
+    .form-group {
+        margin: 10px;
+    }
+
+    .dispositivo-form form .button {
+        padding: 0.7em;
+        margin-top: 10px;
+    }
+}
+
+/* Estilos responsive para pantallas pequeñas */
+@media (max-width: 480px) {
+    .container {
+        max-width: 95%;
+        font-size: 1em;
+        padding: 15px;
+    }
+
+    .form-group {
+        margin: 5px;
+    }
+
+    .dispositivo-form h3 {
+        font-size: 1.2em;
+        margin: 10px;
+    }
+
+    .dispositivo-form form .button {
+        padding: 0.6em;
+        margin-top: 15px;
+    }
+}
+

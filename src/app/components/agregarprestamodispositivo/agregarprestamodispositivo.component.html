@@ -1,1 +1,37 @@
-<p>agregarprestamodispositivo works!</p>
+
+<div class="body">
+    <div class="container">
+      <div class="predis-form">
+        <h3>Agregar Prestamo Dispositivos</h3>
+        <form #createPrestamoDispositivo="ngForm" (ngSubmit)="StorePrestamoDispositivo(createPrestamoDispositivo)">
+          <p class="form-group">
+              <label for="id">Id Prestamo Dispostivo</label>
+              <input type="number" id="id" class="input" name="id" #id="ngModel" [(ngModel)]="detalePrestamoDispositivos.idDetalleDispositivo" required>
+          </p>
+          <p class="form-group">
+            <label for="OBS">Observaciones</label>
+            <input type="text" id="OBS" class="input" name="OBS" #OBS="ngModel" [(ngModel)]="detalePrestamoDispositivos.observaciones" required>
+          </p>
+          <p class="form-group">
+            <label for="PRT">Prestamo</label>
+            <input type="text" id="PRT" class="input" name="PRT" #PRT="ngModel" [(ngModel)]="detalePrestamoDispositivos.prestamo" required>
+          </p>
+          <p class="form-group">
+            <label for="DSP">Dispositivo Prestado</label>
+            <input type="text" id="DSP" class="input" DSP="DSP" #name="ngModel" [(ngModel)]="detalePrestamoDispositivos.dispositivoPrestado" required>
+          </p>
+          <p class="form-group">
+            <label for="FCH">Fecha Devolucion</label>
+            <input type="date" id="FCH" class="input" name="FCH" #FCH="ngModel" [(ngModel)]="detalePrestamoDispositivos.fechaDevolucion" required>
+          </p>
+         
+          <p class="block button-group">
+            <button type="submit" class="button">Guardar</button>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  
+  
