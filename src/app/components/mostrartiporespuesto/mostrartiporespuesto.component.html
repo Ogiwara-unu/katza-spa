@@ -8,8 +8,8 @@
     
      <div class="buttons-container">
       <button class="btn btn-dark" (click)="navigateToAdd()" >Agregar</button>
-      <button class="btn btn-primary" >Editar</button>
-      <button class="btn btn-danger" >Eliminar</button>
+      <button class="btn btn-primary" (click)="editTipoRepuesto()" >Editar</button>
+      <button class="btn btn-danger" (click)="deleteTipoDispositivo()" >Eliminar</button>
     </div>
     
   
@@ -19,63 +19,26 @@
           <th scope="col">#</th>
           <th scope="col">Id Tipo Repuesto</th>
           <th scope="col">Nombre</th>
-        
+          <th scope="col">Acciones</th>
         </tr>
       </thead>
       <tbody>
-        <tr *="let tiporepuesto of getPaginatedTipoRepuesto()">
+        <tr *ngFor="let tiporepuesto of getPaginatedTipoRepuesto()">
           <td>
             <div class="form-check">
-              <input id="check{{tiporepuesto.idMantenimiento}}" class="form-check-input" type="checkbox" (change)="tiporepuesto"><!--updateSelectedMantenimiento(mantenimiento.idMantenimiento)        avisarme para hacer los arreglos-->
-           
+              <input id="check{{tiporepuesto.idTipoRepuesto}}" class="form-check-input" type="checkbox" (change)="updateSelectedTipoRepuesto(tiporepuesto.idTipoRepuesto)"><!--updateSelectedMantenimiento(mantenimiento.idMantenimiento)        avisarme para hacer los arreglos-->
+              <label class="form-check-label" for="check{{tiporepuesto.idTipoRepuesto}}">Seleccionar</label>
             </div>
           </td>
+          <td>{{ tiporepuesto.idTipoRepuesto }}</td>
           <td>
-            <!--
-            <span *ngIf="!isEditing(mantenimiento.idMantenimiento)">{{ mantenimiento.nombreTipoMantenimiento }}</span>
-            <input *ngIf="isEditing(mantenimiento.idMantenimiento)" id="tipoMantenimiento{{mantenimiento.idMantenimiento}}" [(ngModel)]="editableMantenimiento.tipoMantenimiento" type="text" class="form-control" title="Tipo de mantenimiento">
-          -->
+            <span *ngIf="!isEditing(tiporepuesto.idTipoRepuesto)">{{ tiporepuesto.nombre }}</span>
+            <input *ngIf="isEditing(tiporepuesto.idTipoRepuesto)" id="nombre{{tiporepuesto.idTipoRepuesto}}" [(ngModel)]="editableTipoRepuesto.nombre" type="text" class="form-control" title="Nombre">
             </td>
           <td>
-            <!--
-             <span *ngIf="!isEditing(mantenimiento.idMantenimiento)">{{ mantenimiento.empleadoEncargado }}</span>
-            <input *ngIf="isEditing(mantenimiento.idMantenimiento)" id="empleadoEncargado{{mantenimiento.idMantenimiento}}" [(ngModel)]="editableMantenimiento.empleadoEncargado" type="text" class="form-control" title="Encargado">
-          -->
-
+            <button *ngIf="isEditing(tiporepuesto.idTipoRepuesto)" (click)="saveTipoRepuesto(tiporepuesto.idTipoRepuesto)" class="btn btn-success">Guardar</button>
+            <button *ngIf="isEditing(tiporepuesto.idTipoRepuesto)" (click)="cancelEdit()" class="btn btn-secondary">Cancelar</button>
            </td>
-          <td>
-            <!-- 
-            <span *ngIf="!isEditing(mantenimiento.idMantenimiento)">{{ mantenimiento.fechaMantenimiento }}</span>
-            <input *ngIf="isEditing(mantenimiento.idMantenimiento)" id="fechaMantenimiento{{mantenimiento.idMantenimiento}}" [(ngModel)]="editableMantenimiento.fechaMantenimiento" type="text" class="form-control" title="Fecha">
-            -->
-            </td>
-          <td>
-            <!--
-            <span *ngIf="!isEditing(mantenimiento.idMantenimiento)">{{ mantenimiento.duracionMantenimiento }}</span>
-            <input *ngIf="isEditing(mantenimiento.idMantenimiento)" id="duracionMantenimiento{{mantenimiento.idMantenimiento}}" [(ngModel)]="editableMantenimiento.duracionMantenimiento" type="text" class="form-control" title="Duración">
-            -->
-          </td>
-          <td>
-            <!--
-            <span *ngIf="!isEditing(mantenimiento.idMantenimiento)">{{ mantenimiento.idVehiculo }}</span>
-            <input *ngIf="isEditing(mantenimiento.idMantenimiento)" id="idVehiculo{{mantenimiento.idMantenimiento}}" [(ngModel)]="editableMantenimiento.idVehiculo" type="text" class="form-control" title="Vehículo">
-             -->
-             </td>
-  
-          <td>
-            <!-- 
-            <span *ngIf="!isEditing(mantenimiento.idMantenimiento)">{{ mantenimiento.detalleMantenimiento }}</span>
-            <input *ngIf="isEditing(mantenimiento.idMantenimiento)" id="detalleMantenimiento{{mantenimiento.idMantenimiento}}" [(ngModel)]="editableDetalleMantenimiento.observaciones" type="text" class="form-control" title="Detalle de mantenimiento">
-            -->
-            </td>
-          
-  
-          <td>
-            <!-- 
-            <button *ngIf="isEditing(mantenimiento.idMantenimiento)" class="btn btn-success" (click)="saveMantenimiento(mantenimiento.idMantenimiento)">Guardar</button>
-            <button *ngIf="isEditing(mantenimiento.idMantenimiento)" class="btn btn-secondary" (click)="cancelEdit()">Cancelar</button>
-            -->
-         </td>
           
         </tr>
       </tbody>

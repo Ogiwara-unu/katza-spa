@@ -45,7 +45,7 @@
     </table>
   
     <div>
-        <button class="buttons" [disabled]="currentPage === 1" (click)="previousPage()">Anterior</button>
+      <button class="buttons" [disabled]="currentPage === 1" (click)="previousPage()">Anterior</button>
       <button class="buttons" [disabled]="currentPage * itemsPerPage >= filteredTipoDispositivo.length" (click)="nextPage()">Siguiente</button>
        </div>
   </div>

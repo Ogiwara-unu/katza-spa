@@ -46,11 +46,11 @@ export class AgregarmarcarepuestosComponent {
       text: message ,
       confirmButtonText: 'Aceptar',
       didClose : ()=>{
-        window.location.href = '/Mostrar-Tipo-Repuesto'; 
+        window.location.href = '/Mostrar-Marca-Repuesto'; 
       } 
     }).then((result) => {
       if (result.isConfirmed || result.dismiss === Swal.DismissReason.timer) {
-        window.location.href = '/Mostrar-Tipo-Repuesto';
+        window.location.href = '/Mostrar-Marca-Repuesto';
       }
     });
   }
