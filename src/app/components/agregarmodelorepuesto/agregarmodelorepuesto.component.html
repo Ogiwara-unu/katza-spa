@@ -5,17 +5,15 @@
         <h3>Agregar Modelo Repuesto</h3>
         <form #createModeloRepuesto="ngForm" (ngSubmit)="StoreModeloRepuesto(createModeloRepuesto)">
           <p class="form-group">
-              <label for="id">Id Modelo Repuesto</label>
-              <input type="number" id="id" class="input" name="id" #id="ngModel" [(ngModel)]="modeloRepuesto.idModeloRepuesto" required>
-          </p>
-          <p class="form-group">
             <label for="model">Modelo</label>
             <input type="text" id="model" class="input" name="model" #model="ngModel" [(ngModel)]="modeloRepuesto.modelo" required>
           </p>
-          <p class="form-group">
-            <label for="marca">Marca</label>
-            <input type="text" id="marca" class="input" name="marca" #marca="ngModel" [(ngModel)]="modeloRepuesto.marca" required>
-          </p>
+          <div class="form-group">
+            <label for="marcaRepuestosId">Marca</label>
+            <select class="mt-3 p-1 rounded-sm" id="marcaRepuestosId" name="marcaRepuestosId" [(ngModel)]="modeloRepuesto.marca" required>
+              <option *ngFor="let marcaRespuesto of marcaRepuestos" [value]="marcaRespuesto.idMarcaRepuesto">{{ marcaRespuesto.nombre }}</option>
+            </select>
+          </div>
           
           <p class="block button-group">
             <button type="submit" class="button">Guardar</button>

@@ -31,8 +31,7 @@
 }
 
 .form-group {
-    display: flex;
-    flex-direction: column;
+    grid-column: span 2;
     margin: 20px;
 }
 

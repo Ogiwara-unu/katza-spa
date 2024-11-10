@@ -30,7 +30,7 @@ StoreDepartamento(createDepartamento: any) {
   this.departamentoService.create(this.departamento).subscribe({
     next: (response: any) => {
       if (response.status === 201) {
-        this.showAlertSuccess('Se ha Iniciado sesión correctamente', 'success')
+        this.showAlertSuccess('Departamento Agregado correctamente', 'success')
         console.log("Se ha agregado con exito");
         createDepartamento.reset();
       }

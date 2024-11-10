@@ -2,12 +2,8 @@
 <div class="body">
     <div class="container">
       <div class="TYPD-form">
-        <h3>Agregar Tipo Repuesto</h3>
+        <h3>Agregar Tipo Dispositivo</h3>
         <form #createTipoDispositivo="ngForm" (ngSubmit)="StoreTipoDispositivo(createTipoDispositivo)">
-          <p class="form-group">
-              <label for="id">Id Tipo Dispositivo</label>
-              <input type="number" id="id" class="input" name="id" #id="ngModel" [(ngModel)]="tipoDispositivo.idTipoDispositivo" required>
-          </p>
           <p class="form-group">
             <label for="name">Nombre</label>
             <input type="text" id="name" class="input" name="name" #name="ngModel" [(ngModel)]="tipoDispositivo.nombre" required>
