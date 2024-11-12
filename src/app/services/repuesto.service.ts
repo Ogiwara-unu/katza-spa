@@ -25,7 +25,7 @@ export class RepuestoService {
   }
 
 
-  updateTipoRepuesto(repuesto: Repuesto): Observable<any> {
+  updateRepuesto(repuesto: Repuesto): Observable<any> {
     const userJson = JSON.stringify(repuesto);
     const bearerToken = sessionStorage.getItem('token');
     let params = 'data=' + userJson;

@@ -3,9 +3,9 @@ export class Detalleprestamovehiculo {
         public idDetallePrestamo:number,
         public prestamo:number,
         public observaciones:string,
-        public kmInicla:string,
+        public kmInicial:string,
         public kmFinal:string,
-        public vehiculoPrestado:Date,
+        public vehiculoPrestado:number,
         public fechaDevolucion:Date,
     ){
 

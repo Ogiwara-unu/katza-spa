@@ -5,12 +5,8 @@
         <h3>Agregar Prestamo Vehiculo</h3>
         <form #createPrestamoVehiculo="ngForm" (ngSubmit)="StorePrestamoVehiculo(createPrestamoVehiculo)">
           <p class="form-group">
-              <label for="id">Id Prestamo Vehiculo</label>
-              <input type="number" id="id" class="input" name="id" #id="ngModel" [(ngModel)]="Detalleprestamovehiculo.idDetallePrestamo" required>
-          </p>
-          <p class="form-group">
-            <label for="name">Nombre</label>
-            <input type="text" id="name" class="input" name="name" #name="ngModel" [(ngModel)]="Detalleprestamovehiculo.prestamo" required>
+              <label for="id">Id Prestamo</label>
+              <input type="number" id="id" class="input" name="id" #id="ngModel" [(ngModel)]="Detalleprestamovehiculo.prestamo" required>
           </p>
           <p class="form-group">
             <label for="Observaciones">Observaciones</label>
@@ -19,7 +15,7 @@
 
           <p class="form-group">
             <label for="KMI">Kilometraje Inicial</label>
-            <input type="text" id="KMI" class="input" name="KMI" #KMI="ngModel" [(ngModel)]="Detalleprestamovehiculo.kmInicla" required>
+            <input type="text" id="KMI" class="input" name="KMI" #KMI="ngModel" [(ngModel)]="Detalleprestamovehiculo.kmInicial" required>
           </p>
           <p class="form-group">
             <label for="KMF">Kilometraje Final</label>
@@ -27,7 +23,7 @@
           </p>
           <p class="form-group">
             <label for="VHP">Vehiculo Prestado</label>
-            <input type="text" id="VHP" class="input" name="VHP" #VHP="ngModel" [(ngModel)]="Detalleprestamovehiculo.vehiculoPrestado" required>
+            <input type="number" id="VHP" class="input" name="VHP" #VHP="ngModel" [(ngModel)]="Detalleprestamovehiculo.vehiculoPrestado" required>
           </p>
           <p class="form-group">
             <label for="FCD">Fecha Devolucion</label>
