@@ -28,13 +28,13 @@ export class AgregartipodispositivoComponent {
     this.tipoDispositivoService.create(this.tipoDispositivo).subscribe({
       next: (response: any) => {
         if (response.status === 201) {
-          this.showAlertSuccess('Tipo Dispositivo Agregado correctamente', 'success')
-          console.log("Se ha agregado con exito");
+          this.showAlertSuccess('Tipo Dispositivo agregado correctamente', 'success')
+          console.log("Se ha agregado con éxito");
           createTipoDispositivoForm.reset();
         }
       },
       error: (err: any) => {
-        console.error("entro en store departaamento error",err);
+        console.error("Error en store tipo-dispositivo error",err);
         this.showErrorAlert(err);
       }
     });

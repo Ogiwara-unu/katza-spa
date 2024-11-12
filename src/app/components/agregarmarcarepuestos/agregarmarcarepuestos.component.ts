@@ -22,17 +22,17 @@ export class AgregarmarcarepuestosComponent {
   }
 
   StoreMarcaRepuesto(createMarcaRepuestoForm: any) {
-    console.log('Agregando marca Repuesto ->' + this.marcaRespuesto.idMarcaRepuesto);
+    console.log('Agregando Marca Repuesto ->' + this.marcaRespuesto.idMarcaRepuesto);
     this.marcaRepuestosService.create(this.marcaRespuesto).subscribe({
       next: (response: any) => {
         if (response.status === 201) {
-          this.showAlertSuccess('Marca repuesto Agregado correctamente', 'success')
-          console.log("Se ha agregado con exito");
+          this.showAlertSuccess('Marca Repuesto agregado correctamente', 'success')
+          console.log("Se ha agregado con éxito");
           createMarcaRepuestoForm.reset();
         }
       },
       error: (err: any) => {
-        console.error("entro en store marca repuesto error",err);
+        console.error("Error en store marca repuesto error",err);
         this.showErrorAlert(err);
       }
     });
@@ -56,7 +56,7 @@ export class AgregarmarcarepuestosComponent {
   }
   
   private showErrorAlert(error: any) {
-    let errorMessage = 'Hubo un problema al agregar el departamento!.';
+    let errorMessage = 'Hubo un problema al agregar el departamento!';
     if (error.status === 500) {
       errorMessage = 'Error del servidor: Datos Repetidos!';
     }

@@ -27,13 +27,13 @@ export class AgregartiporepuestoComponent {
     this.tipoRepuestoService.create(this.tipoRepuesto).subscribe({
       next: (response: any) => {
         if (response.status === 201) {
-          this.showAlertSuccess('Tipo repuesto Agregado correctamente', 'success')
-          console.log("Se ha agregado con exito");
+          this.showAlertSuccess('Tipo Repuesto agregado correctamente', 'success')
+          console.log("Se ha agregado con éxito");
           createTipoRepuestoForm.reset();
         }
       },
       error: (err: any) => {
-        console.error("entro en store tipo repuesto error",err);
+        console.error("error en store tipo repuesto error",err);
         this.showErrorAlert(err);
       }
     });
@@ -57,7 +57,7 @@ export class AgregartiporepuestoComponent {
   }
   
   private showErrorAlert(error: any) {
-    let errorMessage = 'Hubo un problema al agregar el departamento!.';
+    let errorMessage = 'Hubo un problema al agregar el departamento!';
     if (error.status === 500) {
       errorMessage = 'Error del servidor: Datos Repetidos!';
     }

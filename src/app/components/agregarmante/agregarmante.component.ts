@@ -103,7 +103,7 @@ export class AgregarmanteComponent implements OnInit {
 
   private showSuccessAlert() {
     Swal.fire({
-      title: 'Mantenimiento agregado!',
+      title: 'Mantenimiento agregado.',
       text: 'El mantenimiento ha sido agregado correctamente.',
       icon: 'success',
       confirmButtonText: 'Aceptar'
@@ -112,7 +112,7 @@ export class AgregarmanteComponent implements OnInit {
   private showErrorAlert(error: any) {
     let errorMessage = 'Hubo un problema al agregar el mantenimiento.';
     if (error.status === 500) {
-      errorMessage = 'Error del servidor: Datos Repetidos';
+      errorMessage = 'Error del servidor: Datos Repetidos.';
     }
     Swal.fire({
       title: 'Error',

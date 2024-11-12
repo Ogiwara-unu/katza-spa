@@ -32,12 +32,12 @@ export class AgregarmodelorepuestoComponent implements OnInit {
     next:(response:any)=>{
       if(response.status===201){
         this.showAlertSuccess('Modelo repuesto agregado', 'success')
-        console.log("Se ha agregado con exito");
+        console.log("Se ha agregado con éxito");
         createModeloRepuestoForm.reset();
       }
     },
     error: (err: any) =>{
-      console.error("error al guardar",err);
+      console.error("Error al guardar",err);
       this.showErrorAlert(err);
     }
    });
@@ -76,7 +76,7 @@ export class AgregarmodelorepuestoComponent implements OnInit {
   }
   
   private showErrorAlert(error: any) {
-    let errorMessage = 'Hubo un problema al agregar el modelo!.';
+    let errorMessage = 'Hubo un problema al agregar el modelo.';
     if (error.status === 500) {
       errorMessage = 'Error del servidor: Datos Repetidos!';
     }

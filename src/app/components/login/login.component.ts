@@ -49,7 +49,7 @@ export class LoginComponent {
                 this.showAlertSuccess('Se ha Iniciado sesión correctamente', 'success')
               },
               error: (error: Error) => {
-                console.log("Ha Ocurrido un error al acceder a la identidad del usuario"); // MENSAJE DE DEPURACIÓN
+                console.log("Ha ocurrido un error al acceder la identidad del usuario"); // MENSAJE DE DEPURACIÓN
               }
             });
           }else{
@@ -70,7 +70,7 @@ export class LoginComponent {
   showAlert(message: string, icon: 'success' | 'error' | 'warning' | 'info') {
     Swal.fire({
       icon: icon,
-      title: 'Oops...',
+      title: 'Error',
       text: message
     });
   }
@@ -78,7 +78,7 @@ export class LoginComponent {
   showAlertSuccess(message: string, icon: 'success' | 'error' | 'warning' | 'info') {
     Swal.fire({
       icon: icon,
-      title: 'Exito',
+      title: 'Éxito',
       timer:2000,
       text: message ,
       confirmButtonText: 'Aceptar',

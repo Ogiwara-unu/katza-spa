@@ -43,7 +43,7 @@ export class AgregarrepuestoComponent implements OnInit {
        }
      },
      error: (err: any) =>{
-       console.error("error al guardar",err);
+       console.error("Error al guardar",err);
        this.showErrorAlert(err);
      }
     });
@@ -77,7 +77,7 @@ export class AgregarrepuestoComponent implements OnInit {
   showAlertSuccess(message: string, icon: 'success' | 'error' | 'warning' | 'info') {
     Swal.fire({
       icon: icon,
-      title: 'Exito',
+      title: 'Éxito',
       timer:2000,
       text: message ,
       confirmButtonText: 'Aceptar',

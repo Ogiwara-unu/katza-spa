@@ -24,17 +24,17 @@ export class AgregarprestamovehiculoComponent {
   }
 
   StorePrestamoVehiculo(createPrestamoVehiculoForm: any) {
-    console.log('Agregando prestamo oooooooooooo ->' + this.Detalleprestamovehiculo.prestamo);
-    console.log('Agregando prestamo vehiculo ->' + this.Detalleprestamovehiculo.kmFinal);
-    console.log('Agregando prestamo vehiculo ->' + this.Detalleprestamovehiculo.kmInicial);
-    console.log('Agregando prestamo vehiculo ->' + this.Detalleprestamovehiculo.observaciones);
-    console.log('Agregando prestamo vehiculo ->' + this.Detalleprestamovehiculo.vehiculoPrestado);
+    console.log('Agregando prestamo vehículo ->' + this.Detalleprestamovehiculo.prestamo);
+    console.log('Agregando prestamo vehículo ->' + this.Detalleprestamovehiculo.kmFinal);
+    console.log('Agregando prestamo vehículo ->' + this.Detalleprestamovehiculo.kmInicial);
+    console.log('Agregando prestamo vehículo ->' + this.Detalleprestamovehiculo.observaciones);
+    console.log('Agregando prestamo vehículo ->' + this.Detalleprestamovehiculo.vehiculoPrestado);
   
     this.detallePresService.create(this.Detalleprestamovehiculo).subscribe({
       next: (response: any) => {
         console.log("Response recibido:", response);  // Verifica el contenido de la respuesta
         if (response.status === 201) { 
-          this.showAlertSuccess('Prestamo Vehiculo Agregado correctamente', 'success');
+          this.showAlertSuccess('Prestamo Vehículo Agregado correctamente', 'success');
           console.log("Se ha agregado con éxito");
           createPrestamoVehiculoForm.reset();
         } else {
@@ -42,7 +42,7 @@ export class AgregarprestamovehiculoComponent {
         }
       },
       error: (err: any) => {
-        console.error("Error en store detalle prestamo vehiculo", err);
+        console.error("Error en store detalle prestamo vehículo", err);
         this.showErrorAlert(err);
       }
     });
@@ -68,7 +68,7 @@ export class AgregarprestamovehiculoComponent {
   }
   
   private showErrorAlert(error: any) {
-    let errorMessage = 'Hubo un problema al agregar el prestamo dispositivo!.';
+    let errorMessage = 'Hubo un problema al agregar el prestamo vehiculo!.';
     if (error === 500) {
       errorMessage = 'Error del servidor: Datos Repetidos!';
     }

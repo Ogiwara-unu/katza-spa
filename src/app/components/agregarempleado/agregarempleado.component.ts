@@ -45,7 +45,7 @@ StoreEmpleado(form: any) {
     this.empleadoService.create(this.empleado).subscribe({
       next: (response: any) => {
         if (response.status === 201) {
-          console.log("Se ha agregado con exito");
+          console.log("Se ha agregado con éxito");
           form.reset();
           this.showSuccessAlert();
         }
@@ -61,7 +61,7 @@ StoreEmpleado(form: any) {
 
 private showSuccessAlert() {
   Swal.fire({
-    title: 'Empleado agregado!',
+    title: 'Empleado agregado',
     text: 'El empleado ha sido agregado correctamente.',
     icon: 'success',
     confirmButtonText: 'Aceptar'

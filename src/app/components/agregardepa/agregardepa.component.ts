@@ -30,13 +30,13 @@ StoreDepartamento(createDepartamento: any) {
   this.departamentoService.create(this.departamento).subscribe({
     next: (response: any) => {
       if (response.status === 201) {
-        this.showAlertSuccess('Departamento Agregado correctamente', 'success')
-        console.log("Se ha agregado con exito");
+        this.showAlertSuccess('Departamento agregado correctamente', 'success')
+        console.log("Se ha agregado con éxito");
         createDepartamento.reset();
       }
     },
     error: (err: any) => {
-      console.error("entro en store departaamento error",err);
+      console.error("Error en agregar departamento error",err);
       this.showErrorAlert(err);
     }
   });
@@ -45,7 +45,7 @@ StoreDepartamento(createDepartamento: any) {
 private showSuccessAlert() {
   Swal.fire({
     title: 'Departamento agregado!',
-    text: 'El departamento ha sido agregado correctamente!',
+    text: 'El departamento ha sido agregado correctamente.',
     icon: 'success',
     confirmButtonText: 'Aceptar',
     
@@ -70,7 +70,7 @@ showAlertSuccess(message: string, icon: 'success' | 'error' | 'warning' | 'info'
 }
 
 private showErrorAlert(error: any) {
-  let errorMessage = 'Hubo un problema al agregar el departamento!.';
+  let errorMessage = 'Hubo un problema al agregar el departamento.';
   if (error.status === 500) {
     errorMessage = 'Error del servidor: Datos Repetidos!';
   }

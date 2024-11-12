@@ -27,7 +27,7 @@ export class AgregarvehiComponent {
     this.vehiculoService.create(this.vehiculo).subscribe({
       next: (response: any) => {
         if (response.status === 201) {
-          console.log("Se ha agregado con exito");
+          console.log("Se ha agregado con éxito");
           this.showSuccessAlert();
           createVehiculoForm.reset();
         }

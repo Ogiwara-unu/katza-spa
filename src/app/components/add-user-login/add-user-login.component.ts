@@ -38,13 +38,13 @@ export class AddUserLoginComponent {
           this.showAlert('Ha ocurrido un error al crear usuario', 'error'); 
         }else{
           this.status = 0;
-          this.showAlertSuccess('Se ha creado usuario correctamente', 'success')
+          this.showAlertSuccess('Se ha creado el usuario correctamente', 'success')
         }
 
       },
       error: (err: any) => {
         this.status = 1;
-        this.showAlert('ERROR, error desde el servidor. Contacte a un admin', 'error');
+        this.showAlert('ERROR, error desde el servidor. Contacte a un administrador.', 'error');
       }
     });
 
@@ -54,7 +54,7 @@ export class AddUserLoginComponent {
 showAlert(message: string, icon: 'success' | 'error' | 'warning' | 'info') {
   Swal.fire({
     icon: icon,
-    title: 'Oops...',
+    title: 'Error',
     text: message
   });
 }
