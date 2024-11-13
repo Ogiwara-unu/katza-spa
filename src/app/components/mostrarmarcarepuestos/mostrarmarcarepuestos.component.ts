@@ -172,7 +172,7 @@ export class MostrarmarcarepuestosComponent implements OnInit {
 
   showSuccessAlertDelete(): void {
     Swal.fire({
-      title: 'Marca Repuestos eliminados!',
+      title: 'Marcas Repuestos eliminados!',
       text: 'Las marcas han sido eliminadas correctamente.',
       icon: 'success',
       confirmButtonText: 'Aceptar'

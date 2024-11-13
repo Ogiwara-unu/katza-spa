@@ -100,7 +100,7 @@ export class MostrartipomantenimientoComponent  implements OnInit  {
       cancelButtonText: 'No, cancelar'
     }).then((result) => {
       if (result.isConfirmed) {
-        console.log("Tipo de mantenimeinto seleccionados para eliminar:", this.ids);
+        console.log("Tipo de mantenimientos seleccionados para eliminar:", this.ids);
         let completedRequests = 0;
 
         this.ids.forEach(id => {
@@ -173,8 +173,8 @@ export class MostrartipomantenimientoComponent  implements OnInit  {
 
   showSuccessAlertDelete(): void {
     Swal.fire({
-      title: 'tipo Mantenimiento eliminados!',
-      text: 'Los tipos de mantenimiento han sido eliminados correctamente.',
+      title: 'Tipos Mantenimientos eliminados!',
+      text: 'Los tipos de mantenimientos han sido eliminados correctamente.',
       icon: 'success',
       confirmButtonText: 'Aceptar'
     }).then((result) => {
@@ -186,7 +186,7 @@ export class MostrartipomantenimientoComponent  implements OnInit  {
 
   private showSuccessAlertEdit() {
     Swal.fire({
-      title: 'tipo Mantenimiento!',
+      title: 'Tipo Mantenimiento!',
       text: 'El tipos de mantenimiento ha sido editado correctamente.',
       icon: 'success',
       confirmButtonText: 'Aceptar'

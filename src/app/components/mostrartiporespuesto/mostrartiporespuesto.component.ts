@@ -177,7 +177,7 @@ export class MostrartiporespuestoComponent {
 
   showSuccessAlertDelete(): void {
     Swal.fire({
-      title: 'tipo Repuesto eliminados!',
+      title: 'Tipo Repuesto eliminado!',
       text: 'Los tipos de repuesto han sido eliminados correctamente.',
       icon: 'success',
       confirmButtonText: 'Aceptar'

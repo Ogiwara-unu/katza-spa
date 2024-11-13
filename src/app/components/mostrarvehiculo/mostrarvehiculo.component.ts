@@ -166,8 +166,8 @@ export class MostrarvehiculoComponent implements OnInit {
 
   private showSuccessAlertEdit() {
     Swal.fire({
-      title: 'Vehiculo editado!',
-      text: 'El Vehiculo ha sido editado correctamente.',
+      title: 'Vehículo editado!',
+      text: 'El vehículo ha sido editado correctamente.',
       icon: 'success',
       confirmButtonText: 'Aceptar'
     }).then((result) => {
@@ -178,9 +178,9 @@ export class MostrarvehiculoComponent implements OnInit {
   }
 
   private showErrorAlertEdit(error: any) {
-    let errorMessage = 'Hubo un problema al editar el Vehiculo.';
+    let errorMessage = 'Hubo un problema al editar el vehículo.';
     if (error.status === 500) {
-      errorMessage = 'Error del servidor: No se pudo editar el Vehiculo. Intente nuevamente más tarde.';
+      errorMessage = 'Error del servidor: No se pudo editar el vehículo. Intente nuevamente más tarde.';
     }
     Swal.fire({
       title: 'Error',

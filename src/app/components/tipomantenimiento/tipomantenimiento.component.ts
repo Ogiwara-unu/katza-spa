@@ -29,7 +29,7 @@ StoreTipoMantenimeinto(tipoMantenimeinto: any) {
   this.tipomantenimientoService.create(this.tipoMantenimeinto).subscribe({
     next: (response: any) => {
       if (response.status === 201) {
-        console.log("Se ha agregado con exito");
+        console.log("Se ha agregado con éxito");
         this.showSuccessAlert();
         tipoMantenimeinto.reset();
       }
@@ -44,7 +44,7 @@ StoreTipoMantenimeinto(tipoMantenimeinto: any) {
 private showSuccessAlert() {
   Swal.fire({
     title: 'Nuevo tipo de mantenimiento agregado!',
-    text: 'El tipo del mantenimiento  ha sido agregado correctamente.',
+    text: 'El tipo mantenimiento  ha sido agregado correctamente.',
     icon: 'success',
     confirmButtonText: 'Aceptar'
   });

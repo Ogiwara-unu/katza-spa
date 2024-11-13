@@ -61,12 +61,12 @@ export class MostrarmantenimientoComponent implements OnInit {
   loadTipoMantenimiento(): void {
     this.tipoMantenimientoService.getAllTipoMantenimientos().subscribe({
       next: (response: any) => {
-        console.log('Tipo de Mantenimientos cargados:', response.data); // Debug log
+        console.log('Mantenimientos cargados:', response.data); // Debug log
         this.tipoMantenimientos = response.data;
         this.assignTipoMantenimientoNames();
       },
       error: (err: any) => {
-        console.error('Error al cargar tipo de mantenimientos:', err);
+        console.error('Error al cargar los mantenimientos:', err);
       }
     });
   }
@@ -79,7 +79,7 @@ export class MostrarmantenimientoComponent implements OnInit {
         this.assignDetalleMantenimiento();
       },
       error: (err: any) => {
-        console.error('Error al cargar tipo de mantenimientos:', err);
+        console.error('Error al cargar los mantenimientos:', err);
       }
     });
   }
@@ -99,8 +99,8 @@ export class MostrarmantenimientoComponent implements OnInit {
     if (this.mantenimientos.length > 0 && this.tipoMantenimientos.length > 0) {
       this.filteredMantenimientos.forEach(mantenimiento => {
         const tipoMantenimientoU = this.tipoMantenimientos.find(tipo => tipo.idTipoMantenimiento === mantenimiento.tipoMantenimiento);
-        console.log('ooooooooooo '+ this.tipoMantenimientos);
-        console.log('heyyyyyyyyyyyyy '+tipoMantenimientoU);
+        console.log('Tipos Mantenimientos existentes: '+ this.tipoMantenimientos);
+        console.log('Tipo mantenimiento encontrado: '+tipoMantenimientoU);
         if (tipoMantenimientoU) {
           mantenimiento.nombreTipoMantenimiento = tipoMantenimientoU.nombre;
         }

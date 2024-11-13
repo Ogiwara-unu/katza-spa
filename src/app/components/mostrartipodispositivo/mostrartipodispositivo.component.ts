@@ -169,7 +169,7 @@ export class MostrartipodispositivoComponent implements OnInit {
 
   showSuccessAlertDelete(): void {
     Swal.fire({
-      title: 'tipo dispositivo eliminados!',
+      title: 'Tipos dispositivos eliminados!',
       text: 'Los tipos dispositivos han sido eliminados correctamente.',
       icon: 'success',
       confirmButtonText: 'Aceptar'
@@ -208,7 +208,7 @@ export class MostrartipodispositivoComponent implements OnInit {
 
   private showSuccessAlertEdit() {
     Swal.fire({
-      title: 'tipo Dispositivo!',
+      title: 'Tipo Dispositivo editado!',
       text: 'Los tipos dispositivos han sido editados correctamente.',
       icon: 'success',
       confirmButtonText: 'Aceptar'
