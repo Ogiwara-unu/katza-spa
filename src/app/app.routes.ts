@@ -31,6 +31,12 @@ import { AgregarmarcarepuestosComponent } from './components/agregarmarcarepuest
 import { MostrarmarcarepuestosComponent } from './components/mostrarmarcarepuestos/mostrarmarcarepuestos.component';
 import { AgregardispositivosComponent } from './components/agregardispositivos/agregardispositivos.component';
 import { MostrardispositivosComponent } from './components/mostrardispositivos/mostrardispositivos.component';
+import { AgregarPrestamoComponent } from './components/agregar-prestamo/agregar-prestamo.component';
+import { MostrarPrestamoComponent } from './components/mostrar-prestamo/mostrar-prestamo.component';
+import { AgregarDetalleManVehiculoComponent } from './components/agregar-detalle-man-vehiculo/agregar-detalle-man-vehiculo.component';
+import { MostrarDetalleManVehiculoComponent } from './components/mostrar-detalle-man-vehiculo/mostrar-detalle-man-vehiculo.component';
+import { AgregarRepuestosUsadosComponent } from './components/agregar-repuestos-usados/agregar-repuestos-usados.component';
+import { MostrarRepuestosUsadosComponent } from './components/mostrar-repuestos-usados/mostrar-repuestos-usados.component';
 
 
 export const routes: Routes = [
@@ -69,4 +75,14 @@ export const routes: Routes = [
   {path:'Agregar-Modelo-Repuesto',component:AgregarmodelorepuestoComponent},
   {path:'Mostrar-Tipo-Dispositivo',component:MostrartipodispositivoComponent},
   {path:'Agregar-Tipo-Dispositivo',component:AgregartipodispositivoComponent},
+  {path:'Agregar-Dispositivo',component:AgregardispositivosComponent},
+  {path:'Mostrar-Dispositivo',component:MostrardispositivosComponent},
+  {path:'Agregar-Prestamo',component:AgregarPrestamoComponent},
+  {path:'Mostrar-Prestamo',component:MostrarPrestamoComponent},
+  {path:'Agregar-Detalle-Mantenimiento-Vehiculos',component:AgregarDetalleManVehiculoComponent},
+  {path:'Mostrar-Detalle-Mantenimiento-Vehiculos',component:MostrarDetalleManVehiculoComponent},
+  {path:'Agregar-Repuestos-Usados',component:AgregarRepuestosUsadosComponent},
+  {path:'Mostrar-Repuestos-Usados',component:MostrarRepuestosUsadosComponent},
+
+  
 ];

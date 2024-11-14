@@ -23,7 +23,7 @@ export class AgregartiporepuestoComponent {
   }
 
   StoreTipoRepuesto(createTipoRepuestoForm: any) {
-    console.log('Agregando tipo Repuesto ->' + this.tipoRepuesto.idTipoRepuesto);
+    console.log('Agregando tipo Repuesto ->' + this.tipoRepuesto.idtipoRepuesto);
     this.tipoRepuestoService.create(this.tipoRepuesto).subscribe({
       next: (response: any) => {
         if (response.status === 201) {

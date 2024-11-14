@@ -1,0 +1,74 @@
+<div class="container mt-5">
+
+    <div class="input_search">
+        <input id="searchInput" type="text" class="input" [(ngModel)]="searchTerm" (input)="search()" placeholder="Buscar...">
+  
+       </div>
+  
+    
+     <div class="buttons-container">
+      <button class="btn btn-dark" (click)="navigateToAdd()">Agregar</button>
+      <button class="btn btn-primary" (click)="editPrestamo()" >Editar</button>
+      <button class="btn btn-danger" (click)="deletePrestamo()" >Eliminar</button>
+    </div>
+    
+  
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col" class="text-center">#</th>
+          <th scope="col">Id Prestamo</th>
+          <th scope="col">Empleado Emisor</th>
+          <th scope="col">Empleado Receptor</th>  
+          <th scope="col">Estado</th>
+          <th scope="col">Fecha Inicial</th>
+          <th scope="col">Fecha Limite</th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let prestamos of getPaginatedPrestamo()">
+          <td>
+            <div class="form-check">
+              <input id="check{{prestamos.idPrestamo}}" class="form-check-input" type="checkbox" (change)="updateSelectedPrestamo(prestamos.idPrestamo)"><!--updateSelectedMantenimiento(mantenimiento.idMantenimiento)        avisarme para hacer los arreglos-->
+              <label class="form-check-label" for="check{{prestamos.idPrestamo}}">Seleccionar</label>
+            </div>
+          </td>
+          <td>{{ prestamos.idPrestamo }}</td>
+          <td>
+            <span *ngIf="!isEditing(prestamos.idPrestamo)">{{ prestamos.empleadoEmisor }}</span>
+            <input *ngIf="isEditing(prestamos.idPrestamo)" id="empleadoEmisor{{prestamos.idPrestamo}}" [(ngModel)]="editablePrestamo.empleadoEmisor" type="text" class="form-control" title="Empleado Emisor">
+            </td>
+          <td>
+            <span *ngIf="!isEditing(prestamos.idPrestamo)">{{ prestamos.empleadoReceptor }}</span>
+            <input *ngIf="isEditing(prestamos.idPrestamo)" id="empleadoReceptor{{prestamos.idPrestamo}}" [(ngModel)]="editablePrestamo.empleadoReceptor" type="text" class="form-control" title="Empleado Receptor">
+           </td>
+          <td>
+            <span *ngIf="!isEditing(prestamos.idPrestamo)">{{ prestamos.estadoPrestamo }}</span>
+            <input *ngIf="isEditing(prestamos.idPrestamo)" id="estadoPrestamo{{prestamos.idPrestamo}}" [(ngModel)]="editablePrestamo.estadoPrestamo" type="text" class="form-control" title="Estado Prestamo">
+            </td>
+          <td>
+            <span *ngIf="!isEditing(prestamos.idPrestamo)">{{ prestamos.fechaPrestamo }}</span>
+            <input *ngIf="isEditing(prestamos.idPrestamo)" id="fechaPrestamo{{prestamos.idPrestamo}}" [(ngModel)]="editablePrestamo.fechaPrestamo" type="text" class="form-control" title="Fecha Prestamo">
+          </td>
+          <td>
+            <span *ngIf="!isEditing(prestamos.idPrestamo)">{{ prestamos.fechaLimite }}</span>
+            <input *ngIf="isEditing(prestamos.idPrestamo)" id="fechalimite{{prestamos.idPrestamo}}" [(ngModel)]="editablePrestamo.fechaLimite" type="text" class="form-control" title="Fecha Limite">
+          </td>
+          <td>
+            <button *ngIf="isEditing(prestamos.idPrestamo)" (click)="savePrestamo(prestamos.idPrestamo)" class="btn btn-success">Guardar</button>
+            <button *ngIf="isEditing(prestamos.idPrestamo)" (click)="cancelEdit()" class="btn btn-secondary">Cancelar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <div>
+        
+        <button class="buttons" [disabled]="currentPage === 1" (click)="previousPage()">Anterior</button>
+      <button class="buttons" [disabled]="currentPage * itemsPerPage >= filteredPrestamo.length" (click)="nextPage()">Siguiente</button>
+   
+        
+       </div>
+  </div>
+  

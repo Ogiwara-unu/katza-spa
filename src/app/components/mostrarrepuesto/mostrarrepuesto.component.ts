@@ -191,7 +191,7 @@ export class MostrarrepuestoComponent implements OnInit {
   }
   
   getTipoRepuestoName(idTiporepuesto: number): string {
-    const tipoRepuesto = this.tipoRepuesto.find(t => t.idTipoRepuesto === idTiporepuesto);
+    const tipoRepuesto = this.tipoRepuesto.find(t => t.idtipoRepuesto === idTiporepuesto);
     return tipoRepuesto ? tipoRepuesto.nombre : '';
   }
 

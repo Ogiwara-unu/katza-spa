@@ -1,0 +1,41 @@
+
+<div class="body">
+    <div class="container">
+      <div class="modelorepuesto-form">
+        <h3>Agregar Prestamo</h3>
+        <form #createPrestamoForm="ngForm" (ngSubmit)="StorePrestamo(createPrestamoForm)">
+          <div class="form-group">
+            <label for="empleadoEmisorID">Empleado Emisor</label>
+            <select class="mt-3 p-1 rounded-sm" id="empleadoEmisorID" name="empleadoEmisorID" [(ngModel)]="prestamo.empleadoEmisor" required>
+              <option *ngFor="let empleados of empleados" [value]="empleados.idEmpleado">{{ empleados.nombre }}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="empleadoReceptorID">Empleado Receptor</label>
+            <select class="mt-3 p-1 rounded-sm" id="empleadoReceptorID" name="empleadoReceptorID" [(ngModel)]="prestamo.empleadoReceptor" required>
+              <option *ngFor="let empleados of empleados" [value]="empleados.idEmpleado">{{ empleados.nombre }}</option>
+            </select>
+          </div>
+          <p class="form-group">
+            <label for="estado">Estado</label>
+            <input type="text" id="estado" class="input" name="estado" #estado="ngModel" [(ngModel)]="prestamo.estadoPrestamo" required>
+          </p>
+          <p class="form-group input-box">
+            <label for="fechaInicial" class="details">Fecha Inicial</label>
+            <input type="date" id="fechaInicial" name="fechaInicial" [(ngModel)]="prestamo.fechaPrestamo" required placeholder="Seleccione fecha Inicial" title="Seleccione Fecha Inicial">
+          </p>
+          <p class="form-group input-box">
+            <label for="fechaLimite" class="details">Fecha limite</label>
+            <input type="date" id="fechaLimite" name="fechaLimite" [(ngModel)]="prestamo.fechaLimite" required placeholder="Seleccione fecha limite" title="Seleccione Fecha limite">
+          </p>
+          
+          <p class="block button-group">
+            <button type="submit" class="button">Guardar</button>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  
+  

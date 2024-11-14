@@ -1,85 +1,59 @@
 <div class="container mt-5">
 
     <div class="input_search">
-        <!-- <input id="searchInput" type="text" class="input" [(ngModel)]="searchTerm" (input)="search()" placeholder="Buscar...">
-  -->
+        <input id="searchInput" type="text" class="input" [(ngModel)]="searchTerm" (input)="search()" placeholder="Buscar...">
+  
        </div>
   
     
      <div class="buttons-container">
       <button class="btn btn-dark" (click)="navigateToAdd()">Agregar</button>
-      <button class="btn btn-primary" >Editar</button>
-      <button class="btn btn-danger" >Eliminar</button>
+      <button class="btn btn-primary" (click)="editDetallePrest()" >Editar</button>
+      <button class="btn btn-danger" (click)="deleteDetallePrestDispositivo()">Eliminar</button>
     </div>
     
   
     <table class="table table-striped">
       <thead>
         <tr>
-          <th scope="col">#</th>
+          <th scope="col" class="text-center">#</th>
           <th scope="col">Id Detalle Dispositvo</th>
           <th scope="col">Observaciones</th>
           <th scope="col">Prestamo</th>
           <th scope="col">Dispositivo Prestado</th>
           <th scope="col">Fecha Devolucion</th>
-
+          <th scope="col">Acciones</th>
         </tr>
       </thead>
       <tbody>
-        <tr *="let tiporepuesto of getPaginatedTipoRepuesto()">
+        <tr *ngFor="let detalleprestamodispositivos of getPaginatedDetallePrestDispositivo()">
           <td>
             <div class="form-check">
-              <input id="check{{tiporepuesto.idMantenimiento}}" class="form-check-input" type="checkbox" (change)="tiporepuesto"><!--updateSelectedMantenimiento(mantenimiento.idMantenimiento)        avisarme para hacer los arreglos-->
-           
+              <input id="check{{detalleprestamodispositivos.idDetallePrestamoDispositivo}}" class="form-check-input" type="checkbox" (change)="updateSelectedPrestamoDispositivo(detalleprestamodispositivos.idDetallePrestamoDispositivo)">
+              <label class="form-check-label" for="check{{detalleprestamodispositivos.idDetallePrestamoDispositivo}}">Seleccionar</label>
             </div>
           </td>
+          <td>{{ detalleprestamodispositivos.idDetallePrestamoDispositivo }}</td>
           <td>
-            <!--
-            <span *ngIf="!isEditing(mantenimiento.idMantenimiento)">{{ mantenimiento.nombreTipoMantenimiento }}</span>
-            <input *ngIf="isEditing(mantenimiento.idMantenimiento)" id="tipoMantenimiento{{mantenimiento.idMantenimiento}}" [(ngModel)]="editableMantenimiento.tipoMantenimiento" type="text" class="form-control" title="Tipo de mantenimiento">
-          -->
+            <span *ngIf="!isEditing(detalleprestamodispositivos.idDetallePrestamoDispositivo)">{{ detalleprestamodispositivos.observaciones }}</span>
+            <input *ngIf="isEditing(detalleprestamodispositivos.idDetallePrestamoDispositivo)" id="observaciones{{detalleprestamodispositivos.idDetallePrestamoDispositivo}}" [(ngModel)]="editableDetallePrestamoDispositivo.observaciones" type="text" class="form-control" title="Observaciones">
             </td>
           <td>
-            <!--
-             <span *ngIf="!isEditing(mantenimiento.idMantenimiento)">{{ mantenimiento.empleadoEncargado }}</span>
-            <input *ngIf="isEditing(mantenimiento.idMantenimiento)" id="empleadoEncargado{{mantenimiento.idMantenimiento}}" [(ngModel)]="editableMantenimiento.empleadoEncargado" type="text" class="form-control" title="Encargado">
-          -->
-
+            <span *ngIf="!isEditing(detalleprestamodispositivos.idDetallePrestamoDispositivo)">{{ detalleprestamodispositivos.prestamo }}</span>
+            <input *ngIf="isEditing(detalleprestamodispositivos.idDetallePrestamoDispositivo)" id="prestamo{{detalleprestamodispositivos.idDetallePrestamoDispositivo}}" [(ngModel)]="editableDetallePrestamoDispositivo.prestamo" type="text" class="form-control" title="Prestamo">
            </td>
           <td>
-            <!-- 
-            <span *ngIf="!isEditing(mantenimiento.idMantenimiento)">{{ mantenimiento.fechaMantenimiento }}</span>
-            <input *ngIf="isEditing(mantenimiento.idMantenimiento)" id="fechaMantenimiento{{mantenimiento.idMantenimiento}}" [(ngModel)]="editableMantenimiento.fechaMantenimiento" type="text" class="form-control" title="Fecha">
-            -->
+            <span *ngIf="!isEditing(detalleprestamodispositivos.idDetallePrestamoDispositivo)">{{ detalleprestamodispositivos.dispositivosPrestado }}</span>
+            <input *ngIf="isEditing(detalleprestamodispositivos.idDetallePrestamoDispositivo)" id="dispositivosPrestado{{detalleprestamodispositivos.idDetallePrestamoDispositivo}}" [(ngModel)]="editableDetallePrestamoDispositivo.dispositivosPrestado" type="text" class="form-control" title="DispositivosPestados">
             </td>
           <td>
-            <!--
-            <span *ngIf="!isEditing(mantenimiento.idMantenimiento)">{{ mantenimiento.duracionMantenimiento }}</span>
-            <input *ngIf="isEditing(mantenimiento.idMantenimiento)" id="duracionMantenimiento{{mantenimiento.idMantenimiento}}" [(ngModel)]="editableMantenimiento.duracionMantenimiento" type="text" class="form-control" title="Duración">
-            -->
+            <span *ngIf="!isEditing(detalleprestamodispositivos.idDetallePrestamoDispositivo)">{{ detalleprestamodispositivos.fechaDevolucion }}</span>
+            <input *ngIf="isEditing(detalleprestamodispositivos.idDetallePrestamoDispositivo)" id="fechaDevolucion{{detalleprestamodispositivos.idDetallePrestamoDispositivo}}" [(ngModel)]="editableDetallePrestamoDispositivo.fechaDevolucion" type="text" class="form-control" title="fechaDevolucion">
           </td>
           <td>
-            <!--
-            <span *ngIf="!isEditing(mantenimiento.idMantenimiento)">{{ mantenimiento.idVehiculo }}</span>
-            <input *ngIf="isEditing(mantenimiento.idMantenimiento)" id="idVehiculo{{mantenimiento.idMantenimiento}}" [(ngModel)]="editableMantenimiento.idVehiculo" type="text" class="form-control" title="Vehículo">
-             -->
-             </td>
-  
-          <td>
-            <!-- 
-            <span *ngIf="!isEditing(mantenimiento.idMantenimiento)">{{ mantenimiento.detalleMantenimiento }}</span>
-            <input *ngIf="isEditing(mantenimiento.idMantenimiento)" id="detalleMantenimiento{{mantenimiento.idMantenimiento}}" [(ngModel)]="editableDetalleMantenimiento.observaciones" type="text" class="form-control" title="Detalle de mantenimiento">
-            -->
-            </td>
-          
-  
-          <td>
-            <!-- 
-            <button *ngIf="isEditing(mantenimiento.idMantenimiento)" class="btn btn-success" (click)="saveMantenimiento(mantenimiento.idMantenimiento)">Guardar</button>
-            <button *ngIf="isEditing(mantenimiento.idMantenimiento)" class="btn btn-secondary" (click)="cancelEdit()">Cancelar</button>
-            -->
-         </td>
-          
+            <button *ngIf="isEditing(detalleprestamodispositivos.idDetallePrestamoDispositivo)" (click)="saveDetallePrestamoDispositivo(detalleprestamodispositivos.idDetallePrestamoDispositivo)" class="btn btn-success">Guardar</button>
+            <button *ngIf="isEditing(detalleprestamodispositivos.idDetallePrestamoDispositivo)" (click)="cancelEdit()" class="btn btn-secondary">Cancelar</button>
+          </td>      
         </tr>
       </tbody>
     </table>

@@ -1,8 +1,8 @@
 export class Dispositivos {
     constructor(
-        public idDispositivo:number,
-        public tipoDispositivos:number,
-        public modeloDispositivos:string,
+        public idDispositivos:number,
+        public tipoDispositivo:number,
+        public modeloDispositivo:string,
         public cantidad:number,
         public marca:string,
     ){

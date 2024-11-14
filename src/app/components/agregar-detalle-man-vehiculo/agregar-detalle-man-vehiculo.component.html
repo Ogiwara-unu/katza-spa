@@ -1,0 +1,27 @@
+
+<div class="body">
+    <div class="container">
+      <div class="modelorepuesto-form">
+        <h3>Agregar Detalle Mantenimiento</h3>
+        <form #createDetalleMantenimientoForm="ngForm" (ngSubmit)="StoreDetalleMantenimiento(createDetalleMantenimientoForm)">
+          <p class="form-group">
+            <label for="observaciones">Observaciones</label>
+            <input type="text" id="observaciones" class="input" name="observaciones" #observaciones="ngModel" [(ngModel)]="detalleMV.observaciones" required>
+          </p>
+          <div class="form-group">
+            <label for="mantenimientoId">Mantenimiento</label>
+            <select class="mt-3 p-1 rounded-sm" id="mantenimientoId" name="mantenimientoId" [(ngModel)]="detalleMV.mantenimiento" required>
+              <option *ngFor="let mantenimientos of mantenimiento" [value]="mantenimientos.idMantenimiento">{{ mantenimientos.idMantenimiento }}</option>
+            </select>
+          </div>
+          
+          <p class="block button-group">
+            <button type="submit" class="button">Guardar</button>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  
+  

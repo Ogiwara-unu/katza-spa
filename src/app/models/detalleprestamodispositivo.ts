@@ -1,9 +1,9 @@
 export class Detalleprestamodispositivo {
     constructor(
-        public idDetalleDispositivo:number,
+        public idDetallePrestamoDispositivo:number,
         public observaciones:string,
         public prestamo:number,
-        public dispositivoPrestado:number,
+        public dispositivosPrestado:number,
         public fechaDevolucion:Date,
     ){
 

@@ -14,6 +14,18 @@ import Swal from 'sweetalert2';
 })
 export class AdminViewComponent {
 
+  navigateToAddPrestamo(): void {
+    this.router.navigate(['/Mostrar-Prestamo']);
+  }
+
+  navigateToAddDetalleMantenimientoVehiculos(): void {
+    this.router.navigate(['/Mostrar-Detalle-Mantenimiento-Vehiculos']);
+  }
+
+  navigateToAddRepuestosUsados(): void {
+    this.router.navigate(['/Mostrar-Repuestos-Usados']);
+  }
+  
   navigateToAddDepapartamento(): void {
     this.router.navigate(['/Mostrar-Departamento']);
   }
@@ -40,7 +52,7 @@ export class AdminViewComponent {
     this.router.navigate(['/Mostrar-Tipo-Repuesto']);
   }
   navigateToAddDispositivos(): void {
-    this.router.navigate(['/Mostrar-Dispositvo']);
+    this.router.navigate(['/Mostrar-Dispositivo']);
   }
   navigateToAddPrestamoDispositivo(): void {
     this.router.navigate(['/Mostrar-Prestamo-Dispositivo']);

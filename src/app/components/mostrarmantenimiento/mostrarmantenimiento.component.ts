@@ -96,11 +96,9 @@ export class MostrarmantenimientoComponent implements OnInit {
   }
 
   assignTipoMantenimientoNames(): void {
-    if (this.mantenimientos.length > 0 && this.tipoMantenimientos.length > 0) {
+    if (this.mantenimientos.length > 0 && this.tipoMantenimientos && this.tipoMantenimientos.length > 0) {
       this.filteredMantenimientos.forEach(mantenimiento => {
         const tipoMantenimientoU = this.tipoMantenimientos.find(tipo => tipo.idTipoMantenimiento === mantenimiento.tipoMantenimiento);
-        console.log('Tipos Mantenimientos existentes: '+ this.tipoMantenimientos);
-        console.log('Tipo mantenimiento encontrado: '+tipoMantenimientoU);
         if (tipoMantenimientoU) {
           mantenimiento.nombreTipoMantenimiento = tipoMantenimientoU.nombre;
         }

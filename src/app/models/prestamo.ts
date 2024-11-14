@@ -5,7 +5,7 @@ export class Prestamo {
         public empleadoReceptor:number,
         public estadoPrestamo:string,
         public fechaPrestamo:Date,
-        public fechalimite:Date,
+        public fechaLimite:Date,
     ){
 
     }

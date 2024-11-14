@@ -1,0 +1,33 @@
+
+<div class="body">
+    <div class="container">
+      <div class="modelorepuesto-form">
+        <h3>Agregar Repuesto Usado</h3>
+        <form #createRepuestoUsadoForm="ngForm" (ngSubmit)="StoreRepuestoUsado(createRepuestoUsadoForm)">
+          <div class="form-group">
+            <label for="repuestoId">Repuesto</label>
+            <select class="mt-3 p-1 rounded-sm" id="repuestoId" name="repuestoId" [(ngModel)]="repuestoUsado.repuesto" required>
+              <option *ngFor="let repuestos of repuesto" [value]="repuestos.idRepuesto">{{ repuestos.idRepuesto }}</option>
+            </select>
+          </div>
+          <p class="form-group">
+            <label for="cantidad">Cantidad Usada</label>
+            <input type="text" id="cantidad" class="input" name="cantidad" #cantidad="ngModel" [(ngModel)]="repuestoUsado.cantidadUsada" required>
+          </p>
+          <div class="form-group">
+            <label for="mantenimientoId">Mantenimiento</label>
+            <select class="mt-3 p-1 rounded-sm" id="mantenimientoId" name="mantenimientoId" [(ngModel)]="repuestoUsado.mantenimiento" required>
+              <option *ngFor="let mantenimientos of mantenimiento" [value]="mantenimientos.idMantenimiento">{{ mantenimientos.idMantenimiento }}</option>
+            </select>
+          </div>
+          <p class="block button-group">
+            <button type="submit" class="button">Guardar</button>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+

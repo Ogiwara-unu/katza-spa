@@ -1,6 +1,6 @@
 export class Repuestousados {
     constructor(
-        public idRepuestoUsados:number,
+        public idRepuestosUsados:number,
         public repuesto:number,
         public cantidadUsada:number,
         public mantenimiento:number,

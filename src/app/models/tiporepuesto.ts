@@ -1,6 +1,6 @@
 export class Tiporepuesto {
     constructor(
-        public idTipoRepuesto:number,
+        public idtipoRepuesto:number,
         public nombre:string,
     ){
 

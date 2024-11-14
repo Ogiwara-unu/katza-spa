@@ -4,6 +4,8 @@ import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Dispositivos } from '../../models/dispositivos';
+import { DispositivoService } from '../../services/dispositivo.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-agregardispositivos',
@@ -16,12 +18,55 @@ export class AgregardispositivosComponent {
 
   public dispositivo: Dispositivos;
 
-  constructor(private router: Router,) {
+  constructor(private router: Router,private dispositivoService:DispositivoService) {
     this.dispositivo = new Dispositivos (0,0,"",0,"");  
   }
 
   StoreDispositivo(createDispositivoForm: any) {
-   
+    console.log("Agregando dispositivo ->" + this.dispositivo);
+    this.dispositivoService.create(this.dispositivo).subscribe({
+      next: (response: any) => {
+        if (response.status === 201) {
+          console.log("Se ha agregado con exito");
+          this.showAlertSuccess('Dispositivo Agregado correctamente', 'success');
+          createDispositivoForm.reset();
+        }
+      },
+      error: (err: any) => {
+        console.error(err);
+        this.showErrorAlert(err);
+      }
+    });
+  }
+
+  showAlertSuccess(message: string, icon: 'success' | 'error' | 'warning' | 'info') {
+    Swal.fire({
+      icon: icon,
+      title: 'Exito',
+      timer:2000,
+      text: message ,
+      confirmButtonText: 'Aceptar',
+      didClose : ()=>{
+        window.location.href = '/Mostrar-Dispositivo'; 
+      } 
+    }).then((result) => {
+      if (result.isConfirmed || result.dismiss === Swal.DismissReason.timer) {
+        window.location.href = '/Mostrar-Dispositivo';
+      }
+    });
+  }
+
+  private showErrorAlert(error: any) {
+    let errorMessage = 'Hubo un problema al agregar el dispositivo.';
+    if (error.status === 500) {
+      errorMessage = 'Error del servidor: No se pudo agregar el dispositivo. Intente nuevamente más tarde.';
+    }
+    Swal.fire({
+      title: 'Error',
+      text: errorMessage,
+      icon: 'error',
+      confirmButtonText: 'Aceptar'
+    });
   }
 
 }

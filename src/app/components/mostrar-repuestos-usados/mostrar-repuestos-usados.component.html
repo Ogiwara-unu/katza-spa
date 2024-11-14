@@ -1,0 +1,64 @@
+<div class="container mt-5">
+
+    <div class="input_search">
+        <input id="searchInput" type="text" class="input" [(ngModel)]="searchTerm" (input)="search()" placeholder="Buscar...">
+  
+       </div>
+  
+    
+     <div class="buttons-container">
+      <button class="btn btn-dark" (click)="navigateToAdd()">Agregar</button>
+      <button class="btn btn-primary" (click)="editRepuestoUsado()" >Editar</button>
+      <button class="btn btn-danger" (click)="deleteRepuestoUsado()" >Eliminar</button>
+    </div>
+    
+  
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col" class="text-center">#</th>
+          <th scope="col">Id</th>
+          <th scope="col">Repuesto</th>
+          <th scope="col">Cantidad Usada</th>
+          <th scope="col">Mantenimiento</th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let repuestousado of getPaginatedRepuestoUsado()">
+          <td>
+            <div class="form-check">
+              <input id="check{{repuestousado.idRepuestosUsados}}" class="form-check-input" type="checkbox" (change)="updateSelectedRepuestoUsado(repuestousado.idRepuestosUsados)"><!--updateSelectedMantenimiento(mantenimiento.idMantenimiento)        avisarme para hacer los arreglos-->
+              <label class="form-check-label" for="check{{repuestousado.idRepuestosUsados}}">Seleccionar</label>
+            </div>
+          </td>
+          <td>{{ repuestousado.idRepuestosUsados }}</td>
+          <td>
+            <span *ngIf="!isEditing(repuestousado.idRepuestosUsados)">{{ repuestousado.repuesto }}</span>
+            <input *ngIf="isEditing(repuestousado.idRepuestosUsados)" id="repuesto{{repuestousado.idRepuestosUsados}}" [(ngModel)]="editableRepuestosUsados.repuesto" type="text" class="form-control" title="Repuesto">
+            </td>
+          <td>
+            <span *ngIf="!isEditing(repuestousado.idRepuestosUsados)">{{ repuestousado.cantidadUsada }}</span>
+            <input *ngIf="isEditing(repuestousado.idRepuestosUsados)" id="cantidadUsada{{repuestousado.idRepuestosUsados}}" [(ngModel)]="editableRepuestosUsados.cantidadUsada" type="text" class="form-control" title="Cantidad Usada">
+           </td>
+          <td>
+            <span *ngIf="!isEditing(repuestousado.idRepuestosUsados)">{{ repuestousado.mantenimiento }}</span>
+            <input *ngIf="isEditing(repuestousado.idRepuestosUsados)" id="mantenimiento{{repuestousado.idRepuestosUsados}}" [(ngModel)]="editableRepuestosUsados.mantenimiento" type="text" class="form-control" title="Mantenimiento">
+            </td>
+          <td>
+            <button *ngIf="isEditing(repuestousado.idRepuestosUsados)" (click)="saveRepuestoUsado(repuestousado.idRepuestosUsados)" class="btn btn-success">Guardar</button>
+            <button *ngIf="isEditing(repuestousado.idRepuestosUsados)" (click)="cancelEdit()" class="btn btn-secondary">Cancelar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <div>
+        
+        <button class="buttons" [disabled]="currentPage === 1" (click)="previousPage()">Anterior</button>
+      <button class="buttons" [disabled]="currentPage * itemsPerPage >= filteredRepuestosUsados.length" (click)="nextPage()">Siguiente</button>
+   
+        
+       </div>
+  </div>
+  

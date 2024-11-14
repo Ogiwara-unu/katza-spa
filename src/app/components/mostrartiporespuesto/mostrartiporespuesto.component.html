@@ -26,18 +26,18 @@
         <tr *ngFor="let tiporepuesto of getPaginatedTipoRepuesto()">
           <td>
             <div class="form-check">
-              <input id="check{{tiporepuesto.idTipoRepuesto}}" class="form-check-input" type="checkbox" (change)="updateSelectedTipoRepuesto(tiporepuesto.idTipoRepuesto)"><!--updateSelectedMantenimiento(mantenimiento.idMantenimiento)        avisarme para hacer los arreglos-->
-              <label class="form-check-label" for="check{{tiporepuesto.idTipoRepuesto}}">Seleccionar</label>
+              <input id="check{{tiporepuesto.idtipoRepuesto}}" class="form-check-input" type="checkbox" (change)="updateSelectedTipoRepuesto(tiporepuesto.idtipoRepuesto)"><!--updateSelectedMantenimiento(mantenimiento.idMantenimiento)        avisarme para hacer los arreglos-->
+              <label class="form-check-label" for="check{{tiporepuesto.idtipoRepuesto}}">Seleccionar</label>
             </div>
           </td>
-          <td>{{ tiporepuesto.idTipoRepuesto }}</td>
+          <td>{{ tiporepuesto.idtipoRepuesto }}</td>
           <td>
-            <span *ngIf="!isEditing(tiporepuesto.idTipoRepuesto)">{{ tiporepuesto.nombre }}</span>
-            <input *ngIf="isEditing(tiporepuesto.idTipoRepuesto)" id="nombre{{tiporepuesto.idTipoRepuesto}}" [(ngModel)]="editableTipoRepuesto.nombre" type="text" class="form-control" title="Nombre">
+            <span *ngIf="!isEditing(tiporepuesto.idtipoRepuesto)">{{ tiporepuesto.nombre }}</span>
+            <input *ngIf="isEditing(tiporepuesto.idtipoRepuesto)" id="nombre{{tiporepuesto.idtipoRepuesto}}" [(ngModel)]="editableTipoRepuesto.nombre" type="text" class="form-control" title="Nombre">
             </td>
           <td>
-            <button *ngIf="isEditing(tiporepuesto.idTipoRepuesto)" (click)="saveTipoRepuesto(tiporepuesto.idTipoRepuesto)" class="btn btn-success">Guardar</button>
-            <button *ngIf="isEditing(tiporepuesto.idTipoRepuesto)" (click)="cancelEdit()" class="btn btn-secondary">Cancelar</button>
+            <button *ngIf="isEditing(tiporepuesto.idtipoRepuesto)" (click)="saveTipoRepuesto(tiporepuesto.idtipoRepuesto)" class="btn btn-success">Guardar</button>
+            <button *ngIf="isEditing(tiporepuesto.idtipoRepuesto)" (click)="cancelEdit()" class="btn btn-secondary">Cancelar</button>
            </td>
           
         </tr>

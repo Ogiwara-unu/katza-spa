@@ -15,7 +15,19 @@ export class MantenimientoService {
   }
 
   getAllMantenimientos(): Observable<Mantenimiento[]> {
-    return this._http.get<Mantenimiento[]>(`${this.urlAPI}Mantenimiento`);
+    const bearerToken = sessionStorage.getItem('token');
+    console.log(bearerToken)
+    let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+    
+    if (bearerToken) {
+      headers = headers.set('bearertoken', `${bearerToken}`);
+    }
+    
+    const options = {
+      headers
+    };
+  
+    return this._http.get<Mantenimiento[]>(`${this.urlAPI}Mantenimiento`, options);
   }
 
   create(mantenimeinto:Mantenimiento):Observable<any>{

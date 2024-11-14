@@ -6,6 +6,10 @@ import { FormsModule } from '@angular/forms';
 import { Detalleprestamovehiculo } from '../../models/detalleprestamovehiculo';
 import Swal from 'sweetalert2';
 import { detalleprestamovehiculoService } from '../../services/detallePresVehiculo.service';
+import { Prestamo } from '../../models/prestamo';
+import { Vehiculo } from '../../models/vehiculo';
+import { PrestamoService } from '../../services/prestamo.service';
+import { VehiculoService } from '../../services/vehiculo.service';
 
 @Component({
   selector: 'app-agregarprestamovehiculo',
@@ -17,19 +21,18 @@ import { detalleprestamovehiculoService } from '../../services/detallePresVehicu
 export class AgregarprestamovehiculoComponent {
 
   public Detalleprestamovehiculo: Detalleprestamovehiculo;
+  public prestamo:Prestamo [] = [];
+  public vehiculos:Vehiculo [] = [];
 
-  constructor(private router: Router,private detallePresService:detalleprestamovehiculoService) {
+  constructor(private router: Router,private detallePresService:detalleprestamovehiculoService,
+    private prestamoSrv:PrestamoService,private vehiculoSrv:VehiculoService
+  ) {
     this.Detalleprestamovehiculo = new Detalleprestamovehiculo(0, 0, "", "", "", 0, new Date);
   
   }
 
   StorePrestamoVehiculo(createPrestamoVehiculoForm: any) {
-    console.log('Agregando prestamo vehículo ->' + this.Detalleprestamovehiculo.prestamo);
-    console.log('Agregando prestamo vehículo ->' + this.Detalleprestamovehiculo.kmFinal);
-    console.log('Agregando prestamo vehículo ->' + this.Detalleprestamovehiculo.kmInicial);
-    console.log('Agregando prestamo vehículo ->' + this.Detalleprestamovehiculo.observaciones);
-    console.log('Agregando prestamo vehículo ->' + this.Detalleprestamovehiculo.vehiculoPrestado);
-  
+    console.log('Agregando prestamo ->' + this.Detalleprestamovehiculo);
     this.detallePresService.create(this.Detalleprestamovehiculo).subscribe({
       next: (response: any) => {
         console.log("Response recibido:", response);  // Verifica el contenido de la respuesta
@@ -47,6 +50,29 @@ export class AgregarprestamovehiculoComponent {
       }
     });
   }
+
+  ngOnInit(): void {
+    this.prestamoSrv.getAllPrestamo().subscribe({
+      next: (response: any) => {
+        console.log(response);
+        this.prestamo = response.data;
+      },
+      error: (err: any) => {
+        console.error(err);
+      }
+    });
+
+    this.vehiculoSrv.getAllVehiculo().subscribe({
+      next: (response: any) => {
+        console.log(response);
+        this.vehiculos = response.data;
+      },
+      error: (err: any) => {
+        console.error(err);
+      }
+    });
+
+  }
   
 
 
@@ -58,11 +84,11 @@ export class AgregarprestamovehiculoComponent {
       text: message ,
       confirmButtonText: 'Aceptar',
       didClose : ()=>{
-        window.location.href = 'Agregar-Prestamo-Vehiculo'; 
+        window.location.href = 'Mostrar-Prestamo-Vehiculo'; 
       } 
     }).then((result) => {
       if (result.isConfirmed || result.dismiss === Swal.DismissReason.timer) {
-        window.location.href = 'Agregar-Prestamo-Vehiculo';
+        window.location.href = 'Mostrar-Prestamo-Vehiculo';
       }
     });
   }

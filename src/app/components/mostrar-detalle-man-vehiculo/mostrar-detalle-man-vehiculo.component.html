@@ -1,0 +1,60 @@
+<div class="container mt-5">
+
+    <div class="input_search">
+        <input id="searchInput" type="text" class="input" [(ngModel)]="searchTerm" (input)="search()" placeholder="Buscar...">
+  
+       </div>
+  
+    
+     <div class="buttons-container">
+      <button class="btn btn-dark" (click)="navigateToAdd()">Agregar</button>
+      <button class="btn btn-primary" (click)="editDetalleManVehiculo()" >Editar</button>
+      <button class="btn btn-danger" (click)="deleteDetalleManVehiculo()" >Eliminar</button>
+    </div>
+    
+  
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col" class="text-center">#</th>
+          <th scope="col">Id</th>
+          <th scope="col">Mantenimiento</th>
+          <th scope="col">Observaciones</th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let detallemantenimientovehiculo of getPaginatedDetalleManVehiculo()">
+          <td>
+            <div class="form-check">
+              <input id="check{{detallemantenimientovehiculo.idDetalleMantenimiento}}" class="form-check-input" type="checkbox" (change)="updateSelectedDetalleManVehiculo(detallemantenimientovehiculo.idDetalleMantenimiento)"><!--updateSelectedMantenimiento(mantenimiento.idMantenimiento)        avisarme para hacer los arreglos-->
+              <label class="form-check-label" for="check{{detallemantenimientovehiculo.idDetalleMantenimiento}}">Seleccionar</label>
+            </div>
+          </td>
+          <td>{{ detallemantenimientovehiculo.idDetalleMantenimiento }}</td>
+          <td>
+            <span *ngIf="!isEditing(detallemantenimientovehiculo.idDetalleMantenimiento)">{{ detallemantenimientovehiculo.mantenimiento }}</span>
+            <input *ngIf="isEditing(detallemantenimientovehiculo.idDetalleMantenimiento)" id="mantenimiento{{detallemantenimientovehiculo.idDetalleMantenimiento}}" [(ngModel)]="editableDetalleMantenimientoVehiculo.mantenimiento" type="text" class="form-control" title="Mantenimiento">
+            </td>
+          <td>
+            <span *ngIf="!isEditing(detallemantenimientovehiculo.idDetalleMantenimiento)">{{ detallemantenimientovehiculo.observaciones }}</span>
+            <input *ngIf="isEditing(detallemantenimientovehiculo.idDetalleMantenimiento)" id="observaciones{{detallemantenimientovehiculo.idDetalleMantenimiento}}" [(ngModel)]="editableDetalleMantenimientoVehiculo.observaciones" type="text" class="form-control" title="Observaciones">
+           </td>
+          <td>
+            <button *ngIf="isEditing(detallemantenimientovehiculo.idDetalleMantenimiento)" (click)="saveDetalleMantenimientoVehiculo(detallemantenimientovehiculo.idDetalleMantenimiento)" class="btn btn-success">Guardar</button>
+            <button *ngIf="isEditing(detallemantenimientovehiculo.idDetalleMantenimiento)" (click)="cancelEdit()" class="btn btn-secondary">Cancelar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <div>
+        
+        <button class="buttons" [disabled]="currentPage === 1" (click)="previousPage()">Anterior</button>
+      <button class="buttons" [disabled]="currentPage * itemsPerPage >= filteredDetalleMantenimientoVehiculo.length" (click)="nextPage()">Siguiente</button>
+   
+        
+       </div>
+  </div>
+  
+

@@ -64,12 +64,12 @@ export class MostrartiporespuestoComponent {
 
   saveTipoRepuesto(TipoRepuestoId: number) {
     console.log(this.editableTipoRepuesto);
-    if (this.editableTipoRepuesto.idTipoRepuesto !== undefined) {
+    if (this.editableTipoRepuesto.idtipoRepuesto !== undefined) {
       this.tipoRepuestoService.updateTipoRepuesto(this.editableTipoRepuesto as Tiporepuesto).subscribe({
         next: (response: any) => {
           console.log(response);
           if (response.status === 200) {
-            const index = this.tipoRepuesto.findIndex(Departamento => Departamento.idTipoRepuesto === TipoRepuestoId);
+            const index = this.tipoRepuesto.findIndex(Departamento => Departamento.idtipoRepuesto === TipoRepuestoId);
             if (index !== -1) {
               this.tipoRepuesto[index] = this.editableTipoRepuesto as Tiporepuesto;
             }
@@ -90,7 +90,7 @@ export class MostrartiporespuestoComponent {
     if (this.ids.length === 1) {
       const TipoRepuestoID = this.ids[0];
       this.editingTipoRepuestoId = TipoRepuestoID;
-      const tipoRepuesto = this.tipoRepuesto.find(t => t.idTipoRepuesto === TipoRepuestoID);
+      const tipoRepuesto = this.tipoRepuesto.find(t => t.idtipoRepuesto === TipoRepuestoID);
       if (tipoRepuesto) {
         this.editableTipoRepuesto= { ...tipoRepuesto };
       }
@@ -164,7 +164,7 @@ export class MostrartiporespuestoComponent {
     if (this.searchTerm) {
       const searchTermLower = this.searchTerm.toLowerCase();
       this.filteredTipoRepuesto = this.tipoRepuesto.filter(Tiporepuesto => {
-        const idString = Tiporepuesto.idTipoRepuesto.toString().toLowerCase();
+        const idString = Tiporepuesto.idtipoRepuesto.toString().toLowerCase();
         return idString.includes(searchTermLower) ||
                Tiporepuesto.nombre.toLowerCase().includes(searchTermLower);
       });

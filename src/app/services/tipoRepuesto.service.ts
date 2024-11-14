@@ -36,7 +36,7 @@ export class TipoRepuestoService {
     let options = {
       headers
     }
-    return this._http.put(this.urlAPI + 'TipoRepuesto/' + tiporepuesto.idTipoRepuesto, params, options);
+    return this._http.put(this.urlAPI + 'TipoRepuesto/' + tiporepuesto.idtipoRepuesto, params, options);
   }
 
 
