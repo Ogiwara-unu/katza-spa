@@ -4,10 +4,12 @@
       <div class="dispositivo-form">
         <h3>Agregar Dispositivo</h3>
         <form #createDispositivo="ngForm" (ngSubmit)="StoreDispositivo(createDispositivo)">
-          <p class="form-group">
-            <label for="type">Tipo Dispositivo</label>
-            <input type="text" id="type" class="input" name="type" #type="ngModel" [(ngModel)]="dispositivo.tipoDispositivo" required>
-          </p>
+          <div class="form-group">
+            <label for="tipoDispositivoId">Tipo Dispositivo</label>
+            <select class="mt-3 p-1 rounded-sm" id="tipoDispositivoId" name="tipoDispositivoId" [(ngModel)]="dispositivo.tipoDispositivo" required>
+              <option *ngFor="let tipoDispositivos of tipoDispositivo" [value]="tipoDispositivos.idTipoDispositivo">{{ tipoDispositivos.nombre }}</option>
+            </select>
+          </div>
           <p class="form-group">
             <label for="model">Modelo Dispositivo</label>
             <input type="text" id="model" class="input" name="model" #model="ngModel" [(ngModel)]="dispositivo.modeloDispositivo" required>

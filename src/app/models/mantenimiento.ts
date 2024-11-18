@@ -7,7 +7,10 @@ export class Mantenimiento{
         public fechaMantenimiento:Date,
         public duracionMantenimiento:string,
         public nombreTipoMantenimiento?:string,
-        public detalleMantenimiento?:string
+        public detalleMantenimiento?:string,
+        public nombreVehiculo?:string,
+        public nombreEmpleado?:string,
+        public idDetalleMantenimiento?:number
     ){
 
     }

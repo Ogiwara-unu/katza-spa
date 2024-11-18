@@ -12,7 +12,7 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <th scope="col">#</th>
+        <th scope="col" class="text-center">#</th>
         <th scope="col">Tipo de mantenimiento</th>
         <th scope="col">Encargado id</th>
         <th scope="col">Fecha</th>
@@ -27,11 +27,11 @@
         <td>
           <div class="form-check">
             <input id="check{{mantenimiento.idMantenimiento}}" class="form-check-input" type="checkbox" (change)="updateSelectedMantenimiento(mantenimiento.idMantenimiento)">
-         
+            <label class="form-check-label" for="check{{mantenimiento.idMantenimiento}}">Seleccionar</label>
           </div>
         </td>
         <td>
-          <span *ngIf="!isEditing(mantenimiento.idMantenimiento)">{{ mantenimiento.nombreTipoMantenimiento }}</span>
+          <span *ngIf="!isEditing(mantenimiento.idMantenimiento)">{{ mantenimiento.tipoMantenimiento }}</span>
           <input *ngIf="isEditing(mantenimiento.idMantenimiento)" id="tipoMantenimiento{{mantenimiento.idMantenimiento}}" [(ngModel)]="editableMantenimiento.tipoMantenimiento" type="text" class="form-control" title="Tipo de mantenimiento">
         </td>
         <td>
@@ -53,7 +53,7 @@
 
         <td>
           <span *ngIf="!isEditing(mantenimiento.idMantenimiento)">{{ mantenimiento.detalleMantenimiento }}</span>
-          <input *ngIf="isEditing(mantenimiento.idMantenimiento)" id="detalleMantenimiento{{mantenimiento.idMantenimiento}}" [(ngModel)]="editableDetalleMantenimiento.observaciones" type="text" class="form-control" title="Detalle de mantenimiento">
+          <input *ngIf="isEditing(mantenimiento.idMantenimiento)" id="detalleMantenimiento{{mantenimiento.detalleMantenimiento}}" [(ngModel)]="editableDetalleMantenimiento.idDetalleMantenimiento" type="text" class="form-control" title="Detalle de mantenimiento">
         </td>
         
 

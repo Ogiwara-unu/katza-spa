@@ -6,6 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { Dispositivos } from '../../models/dispositivos';
 import { DispositivoService } from '../../services/dispositivo.service';
 import Swal from 'sweetalert2';
+import { Tipodispositivo } from '../../models/tipodispositivo';
+import { TipoDispositivoService } from '../../services/tipoDespositivo.service';
 
 @Component({
   selector: 'app-agregardispositivos',
@@ -17,8 +19,11 @@ import Swal from 'sweetalert2';
 export class AgregardispositivosComponent {
 
   public dispositivo: Dispositivos;
+  public tipoDispositivo:Tipodispositivo [] = [];
 
-  constructor(private router: Router,private dispositivoService:DispositivoService) {
+  constructor(private router: Router,private dispositivoService:DispositivoService,
+    private tipoDispositivoSrv:TipoDispositivoService
+  ) {
     this.dispositivo = new Dispositivos (0,0,"",0,"");  
   }
 
@@ -37,6 +42,19 @@ export class AgregardispositivosComponent {
         this.showErrorAlert(err);
       }
     });
+  }
+
+  ngOnInit(): void {
+    this.tipoDispositivoSrv.getAllTipoDispositivo().subscribe({
+      next: (response: any) => {
+        console.log(response);
+        this.tipoDispositivo = response.data;
+      },
+      error: (err: any) => {
+        console.error(err);
+      }
+    });
+
   }
 
   showAlertSuccess(message: string, icon: 'success' | 'error' | 'warning' | 'info') {

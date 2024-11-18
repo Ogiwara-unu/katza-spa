@@ -37,6 +37,7 @@ import { AgregarDetalleManVehiculoComponent } from './components/agregar-detalle
 import { MostrarDetalleManVehiculoComponent } from './components/mostrar-detalle-man-vehiculo/mostrar-detalle-man-vehiculo.component';
 import { AgregarRepuestosUsadosComponent } from './components/agregar-repuestos-usados/agregar-repuestos-usados.component';
 import { MostrarRepuestosUsadosComponent } from './components/mostrar-repuestos-usados/mostrar-repuestos-usados.component';
+import { MostrarPruebaMantenimientosComponent } from './components/mostrar-prueba-mantenimientos/mostrar-prueba-mantenimientos.component';
 
 
 export const routes: Routes = [
@@ -52,7 +53,6 @@ export const routes: Routes = [
   { path: 'Agregar-Vehiculo', component: AgregarvehiComponent },
   { path: 'Mostrar-Vehiculo', component: MostrarvehiculoComponent },
   { path: 'Agregar-Mantenimiento', component: AgregarmanteComponent },
-  { path: 'Mostrar-Mantenimiento', component: MostrarmantenimientoComponent },
   { path: 'Agregar-Tipo-Mantenimeinto',component:TipomantenimientoComponent },
   { path: 'Mostrar-Tipo-Mantenimiento',component:MostrartipomantenimientoComponent },
   { path: 'Administracion',component:AdminViewComponent },
@@ -83,6 +83,6 @@ export const routes: Routes = [
   {path:'Mostrar-Detalle-Mantenimiento-Vehiculos',component:MostrarDetalleManVehiculoComponent},
   {path:'Agregar-Repuestos-Usados',component:AgregarRepuestosUsadosComponent},
   {path:'Mostrar-Repuestos-Usados',component:MostrarRepuestosUsadosComponent},
-
+  {path:'Mostrar-Mantenimiento',component:MostrarPruebaMantenimientosComponent},
   
 ];

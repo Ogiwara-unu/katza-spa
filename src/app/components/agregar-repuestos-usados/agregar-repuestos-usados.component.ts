@@ -86,7 +86,7 @@ export class AgregarRepuestosUsadosComponent {
   }
   
   private showErrorAlert(error: any) {
-    let errorMessage = 'Hubo un problema al agregar el Repuesto Usado!.';
+    let errorMessage = 'Hubo un problema al agregar el repuesto usado y/o hay un dato incorrecto.';
     if (error.status === 206) {
       errorMessage = 'Error del servidor: Datos Repetidos!';
     }

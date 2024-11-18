@@ -94,7 +94,7 @@ export class AgregarprestamovehiculoComponent {
   }
   
   private showErrorAlert(error: any) {
-    let errorMessage = 'Hubo un problema al agregar el prestamo vehiculo!.';
+    let errorMessage = 'Hubo un problema al agregar el prestamo y/o hay un dato incorrecto.';
     if (error === 500) {
       errorMessage = 'Error del servidor: Datos Repetidos!';
     }

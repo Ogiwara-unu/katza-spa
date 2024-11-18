@@ -14,6 +14,10 @@ import { TipomantenimientoService } from '../../services/tipomantenimiento.servi
 import { DetalleManVehiculo } from '../../models/detalleManVehiculo';
 import { DetalleMantenimientoService } from '../../services/detalle-mantenimiento.service';
 import Swal from 'sweetalert2';
+import { Repuesto } from '../../models/repuesto';
+import { RepuestoService } from '../../services/repuesto.service';
+import { RepuestoUsadosService } from '../../services/repuestoUsado.service';
+import { Repuestousados } from '../../models/repuestousados';
 
 @Component({
   selector: 'app-agregarmante',
@@ -25,18 +29,21 @@ import Swal from 'sweetalert2';
 export class AgregarmanteComponent implements OnInit {
   public mantenimiento:Mantenimiento;
   public detalleMantenimiento:DetalleManVehiculo;
+  public repuestoUsado : Repuestousados;
   public empleados: Empleado[] = [];
   public vehiculos: Vehiculo [] = [];
+  public repuestos : Repuesto [] = [];
   public tipomantenimientos: TipoMantenimiento [] = [];
 
   constructor(private router: Router,private empleadoService: EmpleadoService,
      private mantenimientoService:MantenimientoService, private vehiculoService:VehiculoService,
     private tipoMantenimientoService:TipomantenimientoService, 
-    private _detalleMantenimientoService:DetalleMantenimientoService) {
+    private _detalleMantenimientoService:DetalleMantenimientoService,
+  private repuestosSrv:RepuestoService,private repuestosUsaSrv:RepuestoUsadosService) {
 
     this.mantenimiento = new Mantenimiento(0,0,0,0,new Date,""); 
     this.detalleMantenimiento=new DetalleManVehiculo(0,0,"");
-  
+    this.repuestoUsado = new Repuestousados(0,0,0,0);
   }
 
   ngOnInit(): void {
@@ -69,27 +76,51 @@ export class AgregarmanteComponent implements OnInit {
         console.error(err);
       }
     });
+
+    this.repuestosSrv.getAllRepuesto().subscribe({
+      next:(response : any) =>{
+        console.log(response);
+        this.repuestos = response.data;
+      },
+      error:(err : any) => {
+        console.error(err);
+      }
+    });
   }
 
 
-  StoreMantenimiento(form:any) {
-    if(form.valid){
+  StoreMantenimiento(form: any) {
+    if (form.valid) {
       this.mantenimientoService.create(this.mantenimiento).subscribe({
         next: (response: any) => {
           if (response.status === 201) {
-            this.detalleMantenimiento.mantenimiento=this.mantenimiento.idMantenimiento;
+            // Obtener el ID generado del mantenimiento
+            const idMantenimientoGenerado = response.mantenimiento.idMantenimiento;
+            this.detalleMantenimiento.mantenimiento = idMantenimientoGenerado;
             this._detalleMantenimientoService.create(this.detalleMantenimiento).subscribe({
-              next: (response: any) => {
-                console.log(response);
-                console.log(this.detalleMantenimiento);
-                this.showSuccessAlert();
-                form.reset();
+              next: (detalleResponse: any) => {
+                console.log(detalleResponse);
+                if(detalleResponse.status === 201){
+                  this.repuestoUsado.mantenimiento = idMantenimientoGenerado;
+                  console.log(this.repuestoUsado);
+                  this.repuestosUsaSrv.create(this.repuestoUsado).subscribe({
+                    next:(repuestoResponse : any) => {
+                      console.log(repuestoResponse);
+                       this.showSuccessAlert();
+                        form.reset();
+                    },
+                    error : (repuestoError : any) => {
+                      console.error(repuestoError);
+                      this.showErrorAlert(repuestoError);
+                    }
+                  });
+                }
               },
-              error: (err: any) => {
-                console.error(err);
+              error: (detalleError: any) => {
+                console.error(detalleError);
+                this.showErrorAlert(detalleError);
               }
-            })
-            console.log(response);
+            });
           }
         },
         error: (err: any) => {
@@ -98,8 +129,8 @@ export class AgregarmanteComponent implements OnInit {
         }
       });
     }
-    
   }
+  
 
   private showSuccessAlert() {
     Swal.fire({
@@ -109,10 +140,11 @@ export class AgregarmanteComponent implements OnInit {
       confirmButtonText: 'Aceptar'
     });
   }
+
   private showErrorAlert(error: any) {
     let errorMessage = 'Hubo un problema al agregar el mantenimiento.';
     if (error.status === 500) {
-      errorMessage = 'Error del servidor: Datos Repetidos.';
+      errorMessage = 'Hubo un problema al agregar el mantenimiento y/o hay un dato incorrecto.';
     }
     Swal.fire({
       title: 'Error',

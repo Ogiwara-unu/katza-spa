@@ -73,7 +73,7 @@ export class AgregarPrestamoComponent {
   }
   
   private showErrorAlert(error: any) {
-    let errorMessage = 'Hubo un problema al agregar el Detalle!.';
+    let errorMessage = 'Hubo un problema al agregar el repuesto y/o hay un dato incorrecto.';
     if (error.status === 206) {
       errorMessage = 'Error del servidor: Datos Repetidos!';
     }

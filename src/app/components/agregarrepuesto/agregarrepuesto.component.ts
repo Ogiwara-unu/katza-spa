@@ -94,7 +94,7 @@ export class AgregarrepuestoComponent implements OnInit {
   private showErrorAlert(error: any) {
     let errorMessage = 'Hubo un problema al agregar el Repuesto!.';
     if (error.status === 500) {
-      errorMessage = 'Error del servidor: Datos Repetidos!';
+      errorMessage = 'Hubo un problema al agregar el repuesto y/o hay un dato incorrecto.';
     }
     Swal.fire({
       title: 'Error',
