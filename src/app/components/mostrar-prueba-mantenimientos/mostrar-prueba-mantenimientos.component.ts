@@ -254,7 +254,6 @@ export class MostrarPruebaMantenimientosComponent {
             if (response.status === 200) {
               // Actualizar el detalle de mantenimiento si ha sido editado
               if (this.editableMantenimiento && this.editableDetalleMantenimiento !== undefined) { // Asegurar que idDetalleMantenimiento esté definido
-                console.log('aaaaaaaaaaaaaaaaaaaaaa')
                 this._detalleMantenimientoService.updateDetalleMantenimiento(this.editableDetalleMantenimiento as DetalleManVehiculo).subscribe({
                   next: (detalleResponse: any) => {
                     console.log(detalleResponse);

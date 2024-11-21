@@ -70,7 +70,7 @@ private showSuccessAlert() {
 
 private showErrorAlert(error: any) {
   let errorMessage = 'Hubo un problema al agregar el empleado.';
-  if (error.status === 500) {
+  if (error.status === 206) {
     errorMessage = 'Error del servidor: Datos Repetidos';
   }
   Swal.fire({

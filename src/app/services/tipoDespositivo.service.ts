@@ -17,39 +17,48 @@ constructor(private _http: HttpClient) {
     this.urlAPI = server.url;
   }
 
-
-  create(tipoDispositivo:Tipodispositivo):Observable<any>{
-    let userJson=JSON.stringify(tipoDispositivo);
-    let params='data='+userJson;
-    let headers=new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
-    let options={
-        headers
+  create(tipoDispositivo: Tipodispositivo): Observable<any> {
+    const bearerToken = sessionStorage.getItem('token');
+    let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+    if (bearerToken) {
+      headers = headers.set('bearertoken', `${bearerToken}`);
     }
-    return this._http.post(this.urlAPI+'TipoDispositivo',params,options);
+    const userJson = JSON.stringify(tipoDispositivo);
+    const params = 'data=' + userJson;
+    const options = { headers };
+    return this._http.post(`${this.urlAPI}TipoDispositivo`, params, options);
   }
 
-  
   getAllTipoDispositivo(): Observable<Tipodispositivo[]> {
-    return this._http.get<Tipodispositivo[]>(`${this.urlAPI}TipoDispositivo`);
-  }
-  
-  deleteTipoDispositivo(id:number){
-    return this._http.delete(this.urlAPI+'TipoDispositivo/'+id);
+    const bearerToken = sessionStorage.getItem('token');
+    let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+    if (bearerToken) {
+      headers = headers.set('bearertoken', `${bearerToken}`);
+    }
+    const options = { headers };
+    return this._http.get<Tipodispositivo[]>(`${this.urlAPI}TipoDispositivo`, options);
   }
 
-  
+  deleteTipoDispositivo(id: number): Observable<any> {
+    const bearerToken = sessionStorage.getItem('token');
+    let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+    if (bearerToken) {
+      headers = headers.set('bearertoken', `${bearerToken}`);
+    }
+    const options = { headers };
+    return this._http.delete(`${this.urlAPI}TipoDispositivo/${id}`, options);
+  }
+
   updateTipoDispositivo(tipoDispositivo: Tipodispositivo): Observable<any> {
     const userJson = JSON.stringify(tipoDispositivo);
+    const params = 'data=' + userJson;
     const bearerToken = sessionStorage.getItem('token');
-    let params = 'data=' + userJson;
     let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
-    let options = {
-      headers
+    if (bearerToken) {
+      headers = headers.set('bearertoken', `${bearerToken}`);
     }
-    return this._http.put(this.urlAPI + 'TipoDispositivo/' + tipoDispositivo.idTipoDispositivo, params, options);
+    const options = { headers };
+    return this._http.put(`${this.urlAPI}TipoDispositivo/${tipoDispositivo.idTipoDispositivo}`, params, options);
   }
-
-
-
 
 }

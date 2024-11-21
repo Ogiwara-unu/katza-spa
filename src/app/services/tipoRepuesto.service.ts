@@ -15,39 +15,52 @@ export class TipoRepuestoService {
     this.urlAPI = server.url;
   }
 
-  
-  getAllTipoRepuesto(): Observable<Tiporepuesto[]> {
-    return this._http.get<Tiporepuesto[]>(`${this.urlAPI}TipoRepuesto`);
-  }
-
-  deleteTipoRepuesto(id:number){
-    return this._http.delete(this.urlAPI+'TipoRepuesto/'+id);
-  }
-
-
-  updateTipoRepuesto(tiporepuesto: Tiporepuesto): Observable<any> {
-    const userJson = JSON.stringify(tiporepuesto);
+   // Obtener todos los tipos de repuesto
+   getAllTipoRepuesto(): Observable<Tiporepuesto[]> {
     const bearerToken = sessionStorage.getItem('token');
-    let params = 'data=' + userJson;
     let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
     if (bearerToken) {
       headers = headers.set('bearertoken', `${bearerToken}`);
     }
-    let options = {
-      headers
-    }
-    return this._http.put(this.urlAPI + 'TipoRepuesto/' + tiporepuesto.idtipoRepuesto, params, options);
+    let options = { headers };
+    return this._http.get<Tiporepuesto[]>(`${this.urlAPI}TipoRepuesto`, options);
   }
 
-
-  create(tiporepuesto:Tiporepuesto):Observable<any>{
-    let userJson=JSON.stringify(tiporepuesto);
-    let params='data='+userJson;
-    let headers=new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
-    let options={
-        headers
+  // Eliminar un tipo de repuesto por ID
+  deleteTipoRepuesto(id: number): Observable<any> {
+    const bearerToken = sessionStorage.getItem('token');
+    let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+    if (bearerToken) {
+      headers = headers.set('bearertoken', `${bearerToken}`);
     }
-    return this._http.post(this.urlAPI+'TipoRepuesto',params,options);
+    let options = { headers };
+    return this._http.delete(`${this.urlAPI}TipoRepuesto/${id}`, options);
+  }
+
+  // Actualizar un tipo de repuesto
+  updateTipoRepuesto(tiporepuesto: Tiporepuesto): Observable<any> {
+    const userJson = JSON.stringify(tiporepuesto);
+    const params = 'data=' + userJson;
+    const bearerToken = sessionStorage.getItem('token');
+    let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+    if (bearerToken) {
+      headers = headers.set('bearertoken', `${bearerToken}`);
+    }
+    let options = { headers };
+    return this._http.put(`${this.urlAPI}TipoRepuesto/${tiporepuesto.idtipoRepuesto}`, params, options);
+  }
+
+  // Crear un nuevo tipo de repuesto
+  create(tiporepuesto: Tiporepuesto): Observable<any> {
+    const bearerToken = sessionStorage.getItem('token');
+    let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+    if (bearerToken) {
+      headers = headers.set('bearertoken', `${bearerToken}`);
+    }
+    const userJson = JSON.stringify(tiporepuesto);
+    const params = 'data=' + userJson;
+    const options = { headers };
+    return this._http.post(`${this.urlAPI}TipoRepuesto`, params, options);
   }
 
 }

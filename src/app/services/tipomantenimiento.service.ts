@@ -17,37 +17,47 @@ export class TipomantenimientoService {
 
   
   getAllTipoMantenimientos(): Observable<TipoMantenimiento[]> {
-    return this._http.get<TipoMantenimiento[]>(`${this.urlAPI}TipoMantenimiento`);
-  }
-
-  deleteTipoMantenimiento(id:number){
-    return this._http.delete(this.urlAPI+'TipoMantenimiento/'+id);
-  }
-
-
-  updateTipoMantenimiento(tipoMantenimeinto: TipoMantenimiento): Observable<any> {
-    const userJson = JSON.stringify(tipoMantenimeinto);
     const bearerToken = sessionStorage.getItem('token');
-    let params = 'data=' + userJson;
     let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
     if (bearerToken) {
       headers = headers.set('bearertoken', `${bearerToken}`);
     }
-    let options = {
-      headers
-    }
-    return this._http.put(this.urlAPI + 'TipoMantenimiento/' + tipoMantenimeinto.idTipoMantenimiento, params, options);
+    const options = { headers };
+    return this._http.get<TipoMantenimiento[]>(`${this.urlAPI}TipoMantenimiento`, options);
   }
 
-
-  create(tipoMantenimiento:TipoMantenimiento):Observable<any>{
-    let userJson=JSON.stringify(tipoMantenimiento);
-    let params='data='+userJson;
-    let headers=new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
-    let options={
-        headers
+  deleteTipoMantenimiento(id: number): Observable<any> {
+    const bearerToken = sessionStorage.getItem('token');
+    let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+    if (bearerToken) {
+      headers = headers.set('bearertoken', `${bearerToken}`);
     }
-    return this._http.post(this.urlAPI+'TipoMantenimiento',params,options);
+    const options = { headers };
+    return this._http.delete(`${this.urlAPI}TipoMantenimiento/${id}`, options);
+  }
+
+  updateTipoMantenimiento(tipoMantenimiento: TipoMantenimiento): Observable<any> {
+    const bearerToken = sessionStorage.getItem('token');
+    let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+    if (bearerToken) {
+      headers = headers.set('bearertoken', `${bearerToken}`);
+    }
+    const userJson = JSON.stringify(tipoMantenimiento);
+    const params = 'data=' + userJson;
+    const options = { headers };
+    return this._http.put(`${this.urlAPI}TipoMantenimiento/${tipoMantenimiento.idTipoMantenimiento}`, params, options);
+  }
+
+  create(tipoMantenimiento: TipoMantenimiento): Observable<any> {
+    const bearerToken = sessionStorage.getItem('token');
+    let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+    if (bearerToken) {
+      headers = headers.set('bearertoken', `${bearerToken}`);
+    }
+    const userJson = JSON.stringify(tipoMantenimiento);
+    const params = 'data=' + userJson;
+    const options = { headers };
+    return this._http.post(`${this.urlAPI}TipoMantenimiento`, params, options);
   }
 
 }

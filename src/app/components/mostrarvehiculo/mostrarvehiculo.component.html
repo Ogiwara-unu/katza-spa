@@ -16,6 +16,7 @@
         <th scope="col">Placa</th>
         <th scope="col">Modelo</th>
         <th scope="col">Marca</th>
+        <th scope="col">Acciones</th>
       </tr>
     </thead>
     <tbody>
@@ -35,6 +36,10 @@
           <span *ngIf="!isEditing(vehiculo.placaVehiculo)">{{ vehiculo.modelo }}</span>
           <input *ngIf="isEditing(vehiculo.placaVehiculo)" id="modelo{{vehiculo.placaVehiculo}}" [(ngModel)]="editableVehiculo.modelo" type="text" class="form-control" title="Modelo">
         </td>
+        <td>
+          <button *ngIf="isEditing(vehiculo.placaVehiculo)" (click)="saveVehiculo(vehiculo.placaVehiculo)" class="btn btn-success">Guardar</button>
+          <button *ngIf="isEditing(vehiculo.placaVehiculo)" (click)="cancelEdit()" class="btn btn-secondary">Cancelar</button>
+         </td>
       </tr>
     </tbody>
   </table>

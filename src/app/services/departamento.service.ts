@@ -16,20 +16,41 @@ export class DepartamentoService {
 
 
   getAllDepartamentos(): Observable<Departamento[]> {
-    return this._http.get<Departamento[]>(`${this.urlAPI}Departamento`);
+    const bearerToken = sessionStorage.getItem('token');
+    console.log(bearerToken)
+    let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+    
+    if (bearerToken) {
+      headers = headers.set('bearertoken', `${bearerToken}`);
+    }
+    
+    const options = {
+      headers
+    };
+    return this._http.get<Departamento[]>(`${this.urlAPI}Departamento`,options);
   }
 
 
   create(departamento: Departamento): Observable<any> {
-    let userJson = JSON.stringify(departamento);
-    let params = 'data=' + userJson;
+    const bearerToken = sessionStorage.getItem('token');
     let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
-    let options = { headers };
+    if (bearerToken) {
+      headers = headers.set('bearertoken', `${bearerToken}`);
+    }
+    const userJson = JSON.stringify(departamento);
+    const params = 'data=' + userJson;
+    const options = { headers };
     return this._http.post(this.urlAPI + 'Departamento', params, options);
   }
 
   deleteDepartamento(id:number){
-    return this._http.delete(this.urlAPI+'Departamento/'+id);
+    const bearerToken = sessionStorage.getItem('token');
+    let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+    if (bearerToken) {
+      headers = headers.set('bearertoken', `${bearerToken}`);
+    }
+    const options = { headers };
+    return this._http.delete(`${this.urlAPI}Departamento/${id}`, options);
   }
 
   

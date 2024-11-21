@@ -15,41 +15,49 @@ export class ModeloRepuestoService {
     this.urlAPI = server.url;
   }
 
-  
   getAllTipoModeloRepuesto(): Observable<Modelorepuesto[]> {
-    return this._http.get<Modelorepuesto[]>(`${this.urlAPI}ModeloRepuesto`);
-  }
-
-  deleteModeloRepuesto(id:number){
-    return this._http.delete(this.urlAPI+'ModeloRepuesto/'+id);
-  }
-
-
-  updateModeloRepuesto(modelorepuesto: Modelorepuesto): Observable<any> {
-    const userJson = JSON.stringify(modelorepuesto);
     const bearerToken = sessionStorage.getItem('token');
-    let params = 'data=' + userJson;
     let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
     if (bearerToken) {
       headers = headers.set('bearertoken', `${bearerToken}`);
     }
-    let options = {
-      headers
-    }
-    return this._http.put(this.urlAPI + 'ModeloRepuesto/' + modelorepuesto.idModeloRepuesto, params, options);
+    const options = { headers };
+    return this._http.get<Modelorepuesto[]>(`${this.urlAPI}ModeloRepuesto`, options);
   }
 
-
-  create(modelorepuesto:Modelorepuesto):Observable<any>{
-    let userJson=JSON.stringify(modelorepuesto);
-    let params='data='+userJson;
-    let headers=new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
-    let options={
-        headers
+  deleteModeloRepuesto(id: number): Observable<any> {
+    const bearerToken = sessionStorage.getItem('token');
+    let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+    if (bearerToken) {
+      headers = headers.set('bearertoken', `${bearerToken}`);
     }
-    return this._http.post(this.urlAPI+'ModeloRepuesto',params,options);
+    const options = { headers };
+    return this._http.delete(`${this.urlAPI}ModeloRepuesto/${id}`, options);
   }
 
+  updateModeloRepuesto(modelorepuesto: Modelorepuesto): Observable<any> {
+    const userJson = JSON.stringify(modelorepuesto);
+    const bearerToken = sessionStorage.getItem('token');
+    const params = 'data=' + userJson;
+    let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+    if (bearerToken) {
+      headers = headers.set('bearertoken', `${bearerToken}`);
+    }
+    const options = { headers };
+    return this._http.put(`${this.urlAPI}ModeloRepuesto/${modelorepuesto.idModeloRepuesto}`, params, options);
+  }
+
+  create(modelorepuesto: Modelorepuesto): Observable<any> {
+    const bearerToken = sessionStorage.getItem('token');
+    let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+    if (bearerToken) {
+      headers = headers.set('bearertoken', `${bearerToken}`);
+    }
+    const userJson = JSON.stringify(modelorepuesto);
+    const params = 'data=' + userJson;
+    const options = { headers };
+    return this._http.post(`${this.urlAPI}ModeloRepuesto`, params, options);
+  }
 }
 
 

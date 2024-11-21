@@ -16,32 +16,34 @@ export class MantenimientoService {
 
   getAllMantenimientos(): Observable<Mantenimiento[]> {
     const bearerToken = sessionStorage.getItem('token');
-    console.log(bearerToken)
     let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
-    
     if (bearerToken) {
       headers = headers.set('bearertoken', `${bearerToken}`);
     }
-    
-    const options = {
-      headers
-    };
-  
+    const options = { headers };
     return this._http.get<Mantenimiento[]>(`${this.urlAPI}Mantenimiento`, options);
   }
 
-  create(mantenimeinto:Mantenimiento):Observable<any>{
-    let userJson=JSON.stringify(mantenimeinto);
-    let params='data='+userJson;
-    let headers=new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
-    let options={
-        headers
+  create(mantenimiento: Mantenimiento): Observable<any> {
+    const bearerToken = sessionStorage.getItem('token');
+    let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+    if (bearerToken) {
+      headers = headers.set('bearertoken', `${bearerToken}`);
     }
-    return this._http.post(this.urlAPI+'Mantenimiento',params,options);
+    const userJson = JSON.stringify(mantenimiento);
+    const params = 'data=' + userJson;
+    const options = { headers };
+    return this._http.post(this.urlAPI + 'Mantenimiento', params, options);
   }
 
-  deleteMantenimiento(id:number){
-    return this._http.delete(this.urlAPI+'Mantenimiento/'+id);
+  deleteMantenimiento(id: number): Observable<any> {
+    const bearerToken = sessionStorage.getItem('token');
+    let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+    if (bearerToken) {
+      headers = headers.set('bearertoken', `${bearerToken}`);
+    }
+    const options = { headers };
+    return this._http.delete(`${this.urlAPI}Mantenimiento/${id}`, options);
   }
 
   updateMantenimiento(mantenimeinto: Mantenimiento): Observable<any> {

@@ -17,39 +17,47 @@ constructor(private _http: HttpClient) {
     this.urlAPI = server.url;
   }
 
-
-  create(empleado:Empleado):Observable<any>{
-    let userJson=JSON.stringify(empleado);
-    let params='data='+userJson;
-    let headers=new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
-    let options={
-        headers
+  create(empleado: Empleado): Observable<any> {
+    const bearerToken = sessionStorage.getItem('token');
+    let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+    if (bearerToken) {
+      headers = headers.set('bearertoken', `${bearerToken}`);
     }
-    return this._http.post(this.urlAPI+'Empleado',params,options);
+    const userJson = JSON.stringify(empleado);
+    const params = 'data=' + userJson;
+    const options = { headers };
+    return this._http.post(`${this.urlAPI}Empleado`, params, options);
   }
 
-  
   getAllEmpleados(): Observable<Empleado[]> {
-    return this._http.get<Empleado[]>(`${this.urlAPI}Empleado`);
-  }
-  
-  deleteEmpleado(id:number){
-    return this._http.delete(this.urlAPI+'Empleado/'+id);
+    const bearerToken = sessionStorage.getItem('token');
+    let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+    if (bearerToken) {
+      headers = headers.set('bearertoken', `${bearerToken}`);
+    }
+    const options = { headers };
+    return this._http.get<Empleado[]>(`${this.urlAPI}Empleado`, options);
   }
 
-  
+  deleteEmpleado(id: number): Observable<any> {
+    const bearerToken = sessionStorage.getItem('token');
+    let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+    if (bearerToken) {
+      headers = headers.set('bearertoken', `${bearerToken}`);
+    }
+    const options = { headers };
+    return this._http.delete(`${this.urlAPI}Empleado/${id}`, options);
+  }
+
   updateEmpleado(empleado: Empleado): Observable<any> {
     const userJson = JSON.stringify(empleado);
     const bearerToken = sessionStorage.getItem('token');
-    let params = 'data=' + userJson;
+    const params = 'data=' + userJson;
     let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
-    let options = {
-      headers
+    if (bearerToken) {
+      headers = headers.set('bearertoken', `${bearerToken}`);
     }
-    return this._http.put(this.urlAPI + 'Empleado/' + empleado.idEmpleado, params, options);
+    const options = { headers };
+    return this._http.put(`${this.urlAPI}Empleado/${empleado.idEmpleado}`, params, options);
   }
-
-
-
-
 }

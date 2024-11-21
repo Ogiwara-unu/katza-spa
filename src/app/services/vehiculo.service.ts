@@ -13,40 +13,52 @@ export class VehiculoService {
     this.urlAPI = server.url;
   }
 
-
-  
+  // Obtener todos los vehículos
   getAllVehiculo(): Observable<Vehiculo[]> {
-    return this._http.get<Vehiculo[]>(`${this.urlAPI}Vehiculo`);
-  }
-
-
-  create(vehiculo: Vehiculo): Observable<any> {
-    let userJson = JSON.stringify(vehiculo);
-    let params = 'data=' + userJson;
-    let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
-    let options = { headers };
-    return this._http.post(this.urlAPI + 'Vehiculo', params, options);
-  }
-
-  deleteVehiculo(id:number){
-    return this._http.delete(this.urlAPI+'Vehiculo/'+id);
-  }
-
-  
-  updateVehiculo(vehiculo: Vehiculo): Observable<any> {
-    const userJson = JSON.stringify(vehiculo);
     const bearerToken = sessionStorage.getItem('token');
-    let params = 'data=' + userJson;
     let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
     if (bearerToken) {
       headers = headers.set('bearertoken', `${bearerToken}`);
     }
-    let options = {
-      headers
-    }
-    return this._http.put(this.urlAPI + 'Vehiculo/' + vehiculo.placaVehiculo, params, options);
+    let options = { headers };
+    return this._http.get<Vehiculo[]>(`${this.urlAPI}Vehiculo`, options);
   }
 
+  // Crear un nuevo vehículo
+  create(vehiculo: Vehiculo): Observable<any> {
+    const bearerToken = sessionStorage.getItem('token');
+    let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+    if (bearerToken) {
+      headers = headers.set('bearertoken', `${bearerToken}`);
+    }
+    const userJson = JSON.stringify(vehiculo);
+    const params = 'data=' + userJson;
+    const options = { headers };
+    return this._http.post(`${this.urlAPI}Vehiculo`, params, options);
+  }
 
+  // Eliminar un vehículo por ID
+  deleteVehiculo(id: number): Observable<any> {
+    const bearerToken = sessionStorage.getItem('token');
+    let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+    if (bearerToken) {
+      headers = headers.set('bearertoken', `${bearerToken}`);
+    }
+    let options = { headers };
+    return this._http.delete(`${this.urlAPI}Vehiculo/${id}`, options);
+  }
+
+  // Actualizar un vehículo
+  updateVehiculo(vehiculo: Vehiculo): Observable<any> {
+    const userJson = JSON.stringify(vehiculo);
+    const params = 'data=' + userJson;
+    const bearerToken = sessionStorage.getItem('token');
+    let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+    if (bearerToken) {
+      headers = headers.set('bearertoken', `${bearerToken}`);
+    }
+    let options = { headers };
+    return this._http.put(`${this.urlAPI}Vehiculo/${vehiculo.placaVehiculo}`, params, options);
+  }
 
 }

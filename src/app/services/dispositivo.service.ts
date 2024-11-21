@@ -17,13 +17,24 @@ export class DispositivoService {
 
   
   getAllDispositivos(): Observable<Dispositivos[]> {
-    return this._http.get<Dispositivos[]>(`${this.urlAPI}Dispositivo`);
+    const bearerToken = sessionStorage.getItem('token');
+    let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+    if (bearerToken) {
+      headers = headers.set('bearertoken', `${bearerToken}`);
+    }
+    const options = { headers };
+    return this._http.get<Dispositivos[]>(`${this.urlAPI}Dispositivo`, options);
   }
 
-  deleteDispositivos(id:number){
-    return this._http.delete(this.urlAPI+'Dispositivo/'+id);
+  deleteDispositivos(id: number): Observable<any> {
+    const bearerToken = sessionStorage.getItem('token');
+    let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+    if (bearerToken) {
+      headers = headers.set('bearertoken', `${bearerToken}`);
+    }
+    const options = { headers };
+    return this._http.delete(`${this.urlAPI}Dispositivo/${id}`, options);
   }
-
 
   updateDispositivos(dispositivos: Dispositivos): Observable<any> {
     const userJson = JSON.stringify(dispositivos);
@@ -33,21 +44,20 @@ export class DispositivoService {
     if (bearerToken) {
       headers = headers.set('bearertoken', `${bearerToken}`);
     }
-    let options = {
-      headers
-    }
-    return this._http.put(this.urlAPI + 'Dispositivo/' + dispositivos.idDispositivos, params, options);
+    const options = { headers };
+    return this._http.put(`${this.urlAPI}Dispositivo/${dispositivos.idDispositivos}`, params, options);
   }
 
-
-  create(dispositivos:Dispositivos):Observable<any>{
-    let userJson=JSON.stringify(dispositivos);
-    let params='data='+userJson;
-    let headers=new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
-    let options={
-        headers
+  create(dispositivos: Dispositivos): Observable<any> {
+    const bearerToken = sessionStorage.getItem('token');
+    let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+    if (bearerToken) {
+      headers = headers.set('bearertoken', `${bearerToken}`);
     }
-    return this._http.post(this.urlAPI+'Dispositivo',params,options);
+    const userJson = JSON.stringify(dispositivos);
+    const params = 'data=' + userJson;
+    const options = { headers };
+    return this._http.post(`${this.urlAPI}Dispositivo`, params, options);
   }
 
 }
